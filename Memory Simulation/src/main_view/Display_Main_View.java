@@ -24,9 +24,10 @@ public class Display_Main_View {
 			AnchorPane  root = loader.load();
 			@SuppressWarnings("unused")
 			Main_View_Controller controller = loader.getController();
-			Scene scene = new Scene(root, 901, 676);
+			Scene scene = new Scene(root, 1161, 888);
 			scene.getStylesheets().add(getClass().getResource("/app/application.css").toExternalForm());
 			stage.setScene(scene);
+			stage.setResizable(false);
 			stage.show();
 		} catch (IOException e) {
 			e.printStackTrace();

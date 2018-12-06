@@ -59,8 +59,6 @@ public class Main_View_Controller implements Initializable {
 		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
-		
-		
 		for(int i = 0; i < 15; i++) {
 			processIdChoiceBox.getSelectionModel().select(i);
 			String process = processIdChoiceBox.getSelectionModel().getSelectedItem();
@@ -71,6 +69,8 @@ public class Main_View_Controller implements Initializable {
 		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 		totalMemoryTxt.setText("600");
+		
+		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 	}
 	
 	public void updateWaitingQueue(ArrayList<Waiting_Process_Obj> queue) {
@@ -105,7 +105,6 @@ public class Main_View_Controller implements Initializable {
 	}
 
 	private void addProcessToWaitingQueue() {
-		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 		
 		if (processSizeTxt.getText().equals("") || burstTimeTxt.getText().equals("")) {
 			new Missing_Information_Alert("Missing process information.");

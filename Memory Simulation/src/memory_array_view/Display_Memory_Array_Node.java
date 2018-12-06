@@ -21,7 +21,8 @@ public class Display_Memory_Array_Node {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/memory_array_view/Memory_Array_Skin.fxml"));
 			VBox root = loader.load();
 			Memory_Array_Node_Controller controller = loader.getController();
-			controller.setMemArrayContainer(memArrBox);
+			//controller.setMemArrayContainer(memArrBox);
+			memArrBox.getChildren().add(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
