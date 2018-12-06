@@ -7,7 +7,7 @@
  * 
  */
 
-package view;
+package main_view;
 
 import java.io.IOException;
 
@@ -20,7 +20,7 @@ public class Display_Main_View {
 
 	public Display_Main_View(Stage stage) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/view/Main_View_Skin.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_view/Main_View_Skin.fxml"));
 			AnchorPane  root = loader.load();
 			@SuppressWarnings("unused")
 			Main_View_Controller controller = loader.getController();

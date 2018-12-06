@@ -2,7 +2,7 @@ package app;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-import view.Display_Main_View;
+import main_view.Display_Main_View;
 
 public class App extends Application {
 	

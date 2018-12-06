@@ -3,9 +3,9 @@ package algorithm;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import main_view.Main_View_Controller;
 import model.Segment_Object;
 import model.Waiting_Process_Obj;
-import view.Main_View_Controller;
 
 public class First_Fit_Algorithm_Thread implements Runnable {
 
@@ -14,6 +14,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private Double cpuSpeed;
 	private ArrayList<Segment_Object> segmentList;
 	private boolean stopQueue = false;
+	private boolean pauseQueue = false;
 	private Main_View_Controller main_View_Controller;
 
 	public First_Fit_Algorithm_Thread(Main_View_Controller main_View_Controller,
@@ -59,13 +60,22 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		}
 
 		main_View_Controller.updateWaitingQueue(waitingQueue);
-
 		int z = 1;
 		System.out.println("----------------------------------------------Starting Queue");
 		while (!stopQueue) {
+			
+			while(pauseQueue) {
+				try {
+					TimeUnit.SECONDS.sleep(1);
+				} catch (InterruptedException e1) {
+					e1.printStackTrace();
+				}
+			}
+			main_View_Controller.updateWaitingQueue(waitingQueue);
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				System.out.println("-----------------------------------------------Second " + z++);
+				
 				for (Segment_Object e : segmentList) {
 					if (e.getObj() != null) {
 						if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
@@ -88,8 +98,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 			for (Segment_Object e : segmentList) {
 				waitingQueue.remove(e.getObj());
 				if (e.getObj() != null) {
-					System.out.println(
-							"PID: " + e.getObj().getProcessId() + " BASE: " + e.getBase() + " Limit:" + e.getLimit());
+					System.out.println("PID: " + e.getObj().getProcessId() + " Burst: " + e.getObj().getBurstSize());
 				} else {
 					System.out.println("PID: None " + "BASE: " + e.getBase() + " Limit:" + e.getLimit());
 				}
@@ -118,6 +127,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	}
 
 	private void removeProcessFromMemory(Waiting_Process_Obj obj) {
+		System.out.println("REMOVING");
 		for (Segment_Object e : segmentList) {
 			if (e.getObj() != null) {
 				if (e.getObj().equals(obj)) {
@@ -127,11 +137,15 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		}
 	}
 
+	public void pauseQueue() {
+		pauseQueue = !pauseQueue;
+	}
 	public void stopQueue() {
 		stopQueue = true;
 	}
 
 	public void updateWaitingQueue(Waiting_Process_Obj process) {
+		System.out.println("ADDING------------------------>");
 		waitingQueue.add(process);
 	}
 

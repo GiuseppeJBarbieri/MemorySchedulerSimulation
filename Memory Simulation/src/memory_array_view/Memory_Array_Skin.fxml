@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="memoryArrayVBox" prefWidth="138.0" style="-fx-background-color: #416399; -fx-border-color: #000000;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="memory_array_view.Memory_Array_Node_Controller">
+   <children>
+      <VBox fx:id="osMemBlockVBox" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #0ffffb; -fx-border-color: #000000;">
+         <children>
+            <Label text="O/S">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <Label fx:id="osSizeLbl" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox1" alignment="TOP_CENTER" prefHeight="79.0" prefWidth="136.0" style="-fx-background-color: #ffdd00; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 1" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl1" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox1" alignment="TOP_CENTER" prefHeight="70.0" prefWidth="134.0" style="-fx-background-color: #ff6e00; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size1" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox2" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #f46b6b; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 2" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl2" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox2" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #ffffff; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size2" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox3" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #b6f458; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 3" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl3" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox3" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size3" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox4" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #d257f4; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 4" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl4" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox4" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size4" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox5" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #f4a557; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 5" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl5" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox5" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size5" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox6" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #00ff26; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 6" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl6" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox6" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size6" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox7" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #ff00aa; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 7" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl7" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox7" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size7" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox8" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #ff0019; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 8" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl8" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox8" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size8" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox9" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #00ffb2; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 9" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl9" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox9" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size9" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+      <VBox fx:id="memBlockVBox10" alignment="TOP_CENTER" prefHeight="32.0" prefWidth="136.0" style="-fx-background-color: #0021ff; -fx-border-color: #000000;">
+         <children>
+            <Label text="Memory Block 10" underline="true">
+               <font>
+                  <Font name="Verdana" size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="memoryBlockSizeLbl10" text="Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Label>
+            <VBox fx:id="process1VBox10" alignment="TOP_CENTER" prefHeight="69.0" prefWidth="134.0" style="-fx-background-color: #0ec607; -fx-border-color: #000000;">
+               <children>
+                  <Label text="Process 1">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="process1Size10" text="Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </VBox>
+         </children>
+      </VBox>
+   </children>
+</VBox>

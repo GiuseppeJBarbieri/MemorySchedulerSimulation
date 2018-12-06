@@ -1,4 +1,4 @@
-package view;
+package main_view;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -19,6 +19,8 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.VBox;
+import memory_array_view.Display_Memory_Array_Node;
 import model.Waiting_Process_Obj;
 
 public class Main_View_Controller implements Initializable {
@@ -35,13 +37,16 @@ public class Main_View_Controller implements Initializable {
 	private TableView<Waiting_Process_Obj> waitingQueueTbl;
 	@FXML
 	private Slider cpuSpeedChoice;
-
+	@FXML
+	private VBox memoryBox;
+	
 	private String[] processList = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10", "P11", "P12", "P13",
 			"P14", "P15", };
 	private String[] algorithmList = { "First-Fit", "Best-Fit", "Worst-Fit" };
 	private ArrayList<Waiting_Process_Obj> waitingQueue;
 	private First_Fit_Algorithm_Thread ffat;
 	private Thread t;
+	private Display_Memory_Array_Node memArrayNode;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -51,10 +56,10 @@ public class Main_View_Controller implements Initializable {
 		textFieldInitialization();
 		algorithmChoiceBox.getSelectionModel().select(0);
 		processIdChoiceBox.getSelectionModel().select(0);
-		
 		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
+		
 		
 		for(int i = 0; i < 15; i++) {
 			processIdChoiceBox.getSelectionModel().select(i);
@@ -75,9 +80,16 @@ public class Main_View_Controller implements Initializable {
 	}
 	private void stopSimulation() {
 		System.out.println("Stopped");
-		ffat.stopQueue();
+		//ffat.stopQueue();
+		ffat.pauseQueue();
+		if(stopBtn.getText().equals("Stop Simulation")) {
+			stopBtn.setText("Resume Simulation");
+		} else {
+			stopBtn.setText("Stop Simulation");
+		}
 	}
 	private void startSimulation() {
+		stopBtn.setDisable(false);
 		System.out.println("Starting...");
 		if(totalMemoryTxt.equals("") ) {
 			new Missing_Information_Alert("Missing memory array size!");
@@ -89,9 +101,12 @@ public class Main_View_Controller implements Initializable {
 				t.start();
 			}
 		}
+		startBtn.setDisable(true);
 	}
 
 	private void addProcessToWaitingQueue() {
+		memArrayNode = new Display_Memory_Array_Node(memoryBox);
+		
 		if (processSizeTxt.getText().equals("") || burstTimeTxt.getText().equals("")) {
 			new Missing_Information_Alert("Missing process information.");
 
@@ -99,8 +114,8 @@ public class Main_View_Controller implements Initializable {
 			if (checkIfProccessInWaitingQueue(processIdChoiceBox.getSelectionModel().getSelectedItem()) == true) {
 				new Missing_Information_Alert("Process already in waiting queue!");
 			} else {
-				waitingQueue.add(new Waiting_Process_Obj(processIdChoiceBox.getSelectionModel().getSelectedItem(),
-						processSizeTxt.getText(), burstTimeTxt.getText()));
+				//waitingQueue.add(new Waiting_Process_Obj(processIdChoiceBox.getSelectionModel().getSelectedItem(),
+					//	processSizeTxt.getText(), burstTimeTxt.getText()));
 				if(ffat != null) {
 					ffat.updateWaitingQueue(new Waiting_Process_Obj(processIdChoiceBox.getSelectionModel().getSelectedItem(),
 							processSizeTxt.getText(), burstTimeTxt.getText()));
