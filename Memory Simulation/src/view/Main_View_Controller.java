@@ -65,7 +65,13 @@ public class Main_View_Controller implements Initializable {
 		}
 		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
-		
+		totalMemoryTxt.setText("600");
+	}
+	
+	public void updateWaitingQueue(ArrayList<Waiting_Process_Obj> queue) {
+		waitingQueue = queue;
+		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
+		waitingQueueTbl.setItems(tableList);
 	}
 	private void stopSimulation() {
 		System.out.println("Stopped");
@@ -95,7 +101,10 @@ public class Main_View_Controller implements Initializable {
 			} else {
 				waitingQueue.add(new Waiting_Process_Obj(processIdChoiceBox.getSelectionModel().getSelectedItem(),
 						processSizeTxt.getText(), burstTimeTxt.getText()));
-
+				if(ffat != null) {
+					ffat.updateWaitingQueue(new Waiting_Process_Obj(processIdChoiceBox.getSelectionModel().getSelectedItem(),
+							processSizeTxt.getText(), burstTimeTxt.getText()));
+				}
 				ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
 				waitingQueueTbl.setItems(tableList);
 			}
