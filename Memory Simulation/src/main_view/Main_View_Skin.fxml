@@ -128,17 +128,27 @@
       </VBox>
       <VBox alignment="TOP_CENTER" layoutX="785.0" layoutY="50.0" prefHeight="785.0" prefWidth="322.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
          <children>
-            <Label text="Memory Array" underline="true">
-               <font>
-                  <Font name="Verdana" size="20.0" />
-               </font>
-            </Label>
-            <HBox prefHeight="761.0" prefWidth="304.0">
+            <VBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="304.0" spacing="15.0">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" />
-                  <VBox fx:id="memoryBox" prefHeight="736.0" prefWidth="222.0" />
+                  <Label text="Memory Array">
+                     <font>
+                        <Font name="Verdana" size="15.0" />
+                     </font>
+                  </Label>
+                  <Line endX="203.2928924560547" endY="1.2928931713104248" opacity="0.35" startX="-85.57107543945312" startY="2.5857863426208496" />
                </children>
-            </HBox>
+               <padding>
+                  <Insets top="10.0" />
+               </padding>
+            </VBox>
+            <VBox fx:id="memoryBox" alignment="TOP_RIGHT" prefHeight="709.0" prefWidth="248.0">
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets right="20.0" top="10.0" />
+               </padding>
+            </VBox>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -214,7 +224,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="549.0" layoutY="361.0" prefHeight="477.0" prefWidth="226.0" spacing="10.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0">
+      <VBox alignment="TOP_CENTER" layoutX="549.0" layoutY="361.0" prefHeight="477.0" prefWidth="226.0" spacing="10.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="361.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="224.0" spacing="20.0">
                <children>
