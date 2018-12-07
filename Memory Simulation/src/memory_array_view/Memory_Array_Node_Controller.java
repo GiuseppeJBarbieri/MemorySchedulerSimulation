@@ -76,6 +76,33 @@ public class Memory_Array_Node_Controller implements Initializable {
 
 	}
 
+	public void startDisplayingMemBlocks(ArrayList<Segment_Object> segmentList) {
+		//use base and limit to figure out where the segments go
+		ArrayList<Segment_Object> segmentListCopy = segmentList;
+		ArrayList<Segment_Object> memoryBlockOrderedList = new ArrayList<>();
+		for(int i = 0; i < segmentList.size(); i++) {
+			int lowestBase = 4097; //1 + max memory size
+			int lowestBaseIndex = 0;
+			for(int j = 0; j < segmentListCopy.size(); j++) {
+				if(segmentListCopy.get(j).getBase() < lowestBase) {
+					lowestBase = segmentListCopy.get(j).getBase();
+					lowestBaseIndex = j;
+				}
+			}
+			memoryBlockOrderedList.add(segmentListCopy.get(lowestBaseIndex));
+			segmentListCopy.remove(lowestBaseIndex);
+		}
+		
+	}
+
+	public void setFreeSpaceInformation(String memorySize) {
+		// sets the base and the size of the free space
+		if (memorySize != null) {
+			freeSpaceLimitLbl.setText(memorySize);
+			freeSpaceSize.setText(Integer.toString((Integer.parseInt(memorySize) - 200)));
+		}
+	}
+
 	public void setMemBlockTxtFields(ArrayList<Segment_Object> segmentList) {
 		for (int i = 0; i < 10; i++) {
 			resetProcesses(segmentList);
@@ -87,7 +114,6 @@ public class Memory_Array_Node_Controller implements Initializable {
 			// if the process is not in a segment then reset process
 			// also if there is no process in a segment make the segment free space
 
-			makeSegmentFreeSpace();
 			if (segmentList.get(i).getObj() != null) {
 				if (segmentList.get(i).getObj().getProcessId().equals("P1")) {
 					processSizeLblList.get(0).setText(segmentList.get(i).getObj().getProcessSize());
@@ -144,344 +170,339 @@ public class Memory_Array_Node_Controller implements Initializable {
 	private void setProcessBoxToSegmentBox(ArrayList<Segment_Object> segmentList) {
 		for (int i = 0; i < segmentList.size(); i++) {
 			if (segmentList.get(i).getObj() != null) {
-				if(segmentList.get(i).getObj().getProcessId().equals("P1")) {
-					if(i == 0) {
+				if (segmentList.get(i).getObj().getProcessId().equals("P1")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process1HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process1HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process1HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process1HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process1HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process1HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process1HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process1HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process1HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process1HBox, limitMemBHBox10);
-					} 
-				} else if(segmentList.get(i).getObj().getProcessId().equals("P2")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P2")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process2HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process2HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process2HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process2HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process2HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process2HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process2HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process2HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process2HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process2HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P3")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P3")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process3HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process3HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process3HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process3HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process3HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process3HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process3HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process3HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process3HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process3HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P4")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P4")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process4HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process4HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process4HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process4HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process4HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process4HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process4HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process4HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process4HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process4HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P5")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P5")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process5HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process5HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process5HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process5HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process5HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process5HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process5HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process5HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process5HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process5HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P6")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P6")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process6HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process6HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process6HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process6HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process6HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process6HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process6HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process6HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process6HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process6HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P7")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P7")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process7HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process7HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process7HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process7HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process7HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process7HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process7HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process7HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process7HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process7HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P8")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P8")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process8HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process8HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process8HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process8HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process8HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process8HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process8HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process8HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process8HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process8HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P9")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P9")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process9HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process9HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process9HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process9HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process9HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process9HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process9HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process9HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process9HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process9HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P10")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P10")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process10HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process10HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process10HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process10HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process10HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process10HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process10HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process10HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process10HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process10HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P11")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P11")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process11HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process11HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process11HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process11HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process11HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process11HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process11HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process11HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process11HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process11HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P12")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P12")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process12HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process12HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process12HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process12HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process12HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process12HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process12HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process12HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process12HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process12HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P13")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P13")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process13HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process13HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process13HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process13HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process13HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process13HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process13HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process13HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process13HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process13HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P14")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P14")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process14HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process14HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process14HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process14HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process14HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process14HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process14HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process14HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process14HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process14HBox, limitMemBHBox10);
-					} 
-				}  else if(segmentList.get(i).getObj().getProcessId().equals("P15")) {
-					if(i == 0) {
+					}
+				} else if (segmentList.get(i).getObj().getProcessId().equals("P15")) {
+					if (i == 0) {
 						memBlock1VBox.getChildren().setAll(baseMemBHBox1, process15HBox, limitMemBHBox1);
-					} else if(i == 1) {
+					} else if (i == 1) {
 						memBlock2VBox.getChildren().setAll(baseMemBHBox2, process15HBox, limitMemBHBox2);
-					} else if(i == 2) {
+					} else if (i == 2) {
 						memBlock3VBox.getChildren().setAll(baseMemBHBox3, process15HBox, limitMemBHBox3);
-					} else if(i == 3) {
+					} else if (i == 3) {
 						memBlock4VBox.getChildren().setAll(baseMemBHBox4, process15HBox, limitMemBHBox4);
-					} else if(i == 4) {
+					} else if (i == 4) {
 						memBlock5VBox.getChildren().setAll(baseMemBHBox5, process15HBox, limitMemBHBox5);
-					} else if(i == 5) {
+					} else if (i == 5) {
 						memBlock6VBox.getChildren().setAll(baseMemBHBox6, process15HBox, limitMemBHBox6);
-					} else if(i == 6) {
+					} else if (i == 6) {
 						memBlock7VBox.getChildren().setAll(baseMemBHBox7, process15HBox, limitMemBHBox7);
-					} else if(i == 7) {
+					} else if (i == 7) {
 						memBlock8VBox.getChildren().setAll(baseMemBHBox8, process15HBox, limitMemBHBox8);
-					} else if(i == 8) {
+					} else if (i == 8) {
 						memBlock9VBox.getChildren().setAll(baseMemBHBox9, process15HBox, limitMemBHBox9);
-					} else if(i == 9) {
+					} else if (i == 9) {
 						memBlock10VBox.getChildren().setAll(baseMemBHBox10, process15HBox, limitMemBHBox10);
-					} 
-				} 
+					}
+				}
 			}
 		}
-	}
-	
-
-	private void makeSegmentFreeSpace() {
-
 	}
 
 	private void resetProcesses(ArrayList<Segment_Object> segmentList) {

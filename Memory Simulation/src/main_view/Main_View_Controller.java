@@ -28,7 +28,7 @@ import model.Waiting_Process_Obj;
 public class Main_View_Controller implements Initializable {
 
 	@FXML
-	private Button addProcessBtn, compactBtn, restartBtn, startBtn, stopBtn;
+	private Button setMemorySizeBtn, addProcessBtn, compactBtn, restartBtn, startBtn, stopBtn;
 	@FXML
 	private ChoiceBox<String> algorithmChoiceBox, processIdChoiceBox, partitionTypeChoiceBox,
 			partitionSizeTypeChoiceBox;
@@ -47,7 +47,7 @@ public class Main_View_Controller implements Initializable {
 			"P14", "P15", };
 	private String[] algorithmList = { "First-Fit", "Best-Fit", "Worst-Fit" };
 	private String[] partitionTypeList = { "Fixed Partitioning" };
-	private String[] partitionSizeTypeList = { "Equal", "Unequal" };
+	private String[] partitionSizeTypeList = { "Unequal" };
 	private ArrayList<Waiting_Process_Obj> waitingQueue;
 	private First_Fit_Algorithm_Thread ffat;
 	private Thread t;
@@ -59,7 +59,7 @@ public class Main_View_Controller implements Initializable {
 		initializeTblCol();
 		initializeChoiceBox();
 		textFieldInitialization();
-
+		
 		algorithmChoiceBox.getSelectionModel().select(0);
 		processIdChoiceBox.getSelectionModel().select(0);
 		partitionTypeChoiceBox.getSelectionModel().select(0);
@@ -72,7 +72,7 @@ public class Main_View_Controller implements Initializable {
 		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
-
+		setMemorySizeBtn.setOnAction(e -> setTotalMemorySpace());
 		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 
 		for (int i = 0; i < 15; i++) {
@@ -87,6 +87,17 @@ public class Main_View_Controller implements Initializable {
 		waitingQueueTbl.setItems(tableList);
 		totalMemoryTxt.setText("600");
 
+	}
+	
+	public void setTotalMemorySpace() {
+		if(Integer.parseInt(totalMemoryTxt.getText()) < 1024) {
+			new Missing_Information_Alert("Memory total can't be less than 1024KB (1MB) and max 4096KB (4MB).");
+			
+		} else if(Integer.parseInt(totalMemoryTxt.getText()) > 4096) {
+			new Missing_Information_Alert("Memory total can't be less than 1024KB (1MB) and max 4096KB (4MB).");
+		} else {
+			memArrayNode.setFreeSpaceInformation(totalMemoryTxt.getText());
+		}
 	}
 
 	public void setfreeAndInUseBlocksTxt(String freeBlocks, String inUseBlocks) {

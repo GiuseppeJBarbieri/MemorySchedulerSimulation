@@ -39,7 +39,7 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox layoutX="76.0" layoutY="50.0" prefHeight="129.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <VBox layoutX="76.0" layoutY="50.0" prefHeight="215.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
          <children>
             <Label text="Select Algorithm">
                <font>
@@ -59,6 +59,11 @@
                </font>
             </Label>
             <TextField fx:id="totalMemoryTxt" alignment="CENTER" />
+            <Button fx:id="setMemorySizeBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Set Memory Size">
+               <font>
+                  <Font name="Verdana" size="12.0" />
+               </font>
+            </Button>
          </children>
          <padding>
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
@@ -111,7 +116,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="237.0" prefHeight="601.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="237.0">
+      <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="274.0" prefHeight="564.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="274.0">
          <children>
             <Label text="Waiting Queue" underline="true">
                <font>
@@ -155,7 +160,7 @@
                         <Insets />
                      </opaqueInsets>
                      <padding>
-                        <Insets left="30.0" right="20.0" top="10.0" />
+                        <Insets right="5.0" top="10.0" />
                      </padding>
                   </VBox>
                </content>

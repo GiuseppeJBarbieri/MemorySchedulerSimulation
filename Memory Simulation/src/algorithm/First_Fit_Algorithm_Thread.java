@@ -47,19 +47,20 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 
 		int base = 200;
 		int limit = 200;
+		int id = 1;
 		for (Waiting_Process_Obj e : waitingQueue) {
 			if (segmentList.size() < 9) {
 				limit += Integer.parseInt(e.getProcessSize());
 				if (limit > Integer.parseInt(totalMemorySize)) {
-					segmentList.add(new Segment_Object(base, (Integer.parseInt(totalMemorySize) - 1), null));
+					segmentList.add(new Segment_Object(id++, base, (Integer.parseInt(totalMemorySize) - 1), null));
 				} else {
-					segmentList.add(new Segment_Object(base, limit, e));
+					segmentList.add(new Segment_Object(id++, base, limit, e));
 					base += Integer.parseInt(e.getProcessSize());
 				}
 			} else {
 				limit = Integer.parseInt(totalMemorySize) + limit;
 				if(limit > Integer.parseInt(e.getProcessSize())) {
-					segmentList.add(new Segment_Object(base, limit, e));
+					segmentList.add(new Segment_Object(id++, base, limit, e));
 					break;
 				}
 			}
@@ -74,6 +75,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		while (!stopQueue) {
 			main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks), Integer.toString(inUseMemBlocks));
 			setMemoryArrayInformation();
+			startDisplayingMemoryBlocksInArray();
 			while (pauseQueue) {
 				try {
 					TimeUnit.SECONDS.sleep(1);
@@ -120,6 +122,10 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 
 	}
 	
+	private void startDisplayingMemoryBlocksInArray() {
+		ffamavCont.startDisplayingMemBlocks(segmentList);
+	}
+
 	private void setMemoryArrayInformation() {
 		//also sets free blocks and blocks in use txtfields
 		Platform.runLater(new Runnable() {

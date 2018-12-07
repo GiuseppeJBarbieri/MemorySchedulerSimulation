@@ -4,9 +4,11 @@ public class Segment_Object {
 
 	private int base, limit;
 	private Waiting_Process_Obj obj;
+	private int segmentId;
 
-	public Segment_Object(int base, int limit, Waiting_Process_Obj obj) {
+	public Segment_Object(int segmentId, int base, int limit, Waiting_Process_Obj obj) {
 		super();
+		this.segmentId = segmentId;
 		this.base = base;
 		this.limit = limit;
 		this.obj = obj;
@@ -36,4 +38,12 @@ public class Segment_Object {
 		this.obj = obj;
 	}
 
+	public int getSegmentId() {
+		return segmentId;
+	}
+
+	public void setSegmentId(int segmentId) {
+		this.segmentId = segmentId;
+	}
+	
 }

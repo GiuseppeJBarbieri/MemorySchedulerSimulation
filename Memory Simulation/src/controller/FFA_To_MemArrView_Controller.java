@@ -20,4 +20,8 @@ public class FFA_To_MemArrView_Controller {
 		memArrayNode.setMemBlockSizeTxtFields(segmentList);
 	}
 
+	public void startDisplayingMemBlocks(ArrayList<Segment_Object> segmentList) {
+		memArrayNode.startDisplayingMemBlocks(segmentList);
+	}
+
 }

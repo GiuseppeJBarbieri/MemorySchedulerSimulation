@@ -36,4 +36,12 @@ public class Display_Memory_Array_Node {
 		controller.setMemBlockTxtFields(segmentList);
 	}
 
+	public void setFreeSpaceInformation(String text) {
+		controller.setFreeSpaceInformation(text);
+	}
+
+	public void startDisplayingMemBlocks(ArrayList<Segment_Object> segmentList) {
+		controller.startDisplayingMemBlocks(segmentList);
+	}
+
 }
