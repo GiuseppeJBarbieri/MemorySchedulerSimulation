@@ -133,7 +133,7 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="785.0" layoutY="50.0" prefHeight="785.0" prefWidth="322.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="50.0">
+      <VBox alignment="TOP_CENTER" layoutX="785.0" layoutY="50.0" prefHeight="788.0" prefWidth="521.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="50.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="304.0" spacing="15.0">
                <children>
@@ -142,7 +142,7 @@
                         <Font name="Verdana" size="15.0" />
                      </font>
                   </Label>
-                  <Line endX="203.2928924560547" endY="1.2928931713104248" opacity="0.35" startX="-85.57107543945312" startY="2.5857863426208496" />
+                  <Line endX="412.7218017578125" endY="4.878664016723633" opacity="0.35" startX="-64.2843017578125" startY="4.878664970397949" />
                </children>
                <padding>
                   <Insets top="10.0" />
@@ -150,12 +150,12 @@
             </VBox>
             <ScrollPane>
                <content>
-                  <VBox fx:id="memoryBox" alignment="TOP_RIGHT" prefHeight="709.0" prefWidth="457.0">
+                  <VBox fx:id="memoryBox" alignment="TOP_RIGHT" prefHeight="709.0" prefWidth="495.0">
                      <opaqueInsets>
                         <Insets />
                      </opaqueInsets>
                      <padding>
-                        <Insets right="20.0" top="10.0" />
+                        <Insets left="30.0" right="20.0" top="10.0" />
                      </padding>
                   </VBox>
                </content>

@@ -3,6 +3,7 @@ package algorithm;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import controller.FFA_To_MemArrView_Controller;
 import main_view.Main_View_Controller;
 import model.Segment_Object;
 import model.Waiting_Process_Obj;
@@ -17,15 +18,18 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private boolean pauseQueue = false;
 	private Main_View_Controller main_View_Controller;
 	private int timeElapsed;
+	private FFA_To_MemArrView_Controller ffamavCont;
 
 	public First_Fit_Algorithm_Thread(Main_View_Controller main_View_Controller,
-			ArrayList<Waiting_Process_Obj> waitingQueue, String totalMemorySize, Double cpuSpeed) {
+			ArrayList<Waiting_Process_Obj> waitingQueue, String totalMemorySize, Double cpuSpeed,
+			FFA_To_MemArrView_Controller ffamavCont) {
 		timeElapsed = 0;
 		this.main_View_Controller = main_View_Controller;
 		this.waitingQueue = waitingQueue;
 		this.totalMemorySize = totalMemorySize;
 		this.cpuSpeed = cpuSpeed;
 		segmentList = new ArrayList<>();
+		this.ffamavCont = ffamavCont;
 	}
 
 	@Override
@@ -39,12 +43,19 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		int base = 0;
 		int limit = 0;
 		for (Waiting_Process_Obj e : waitingQueue) {
-			limit += Integer.parseInt(e.getProcessSize());
-			if (limit > Integer.parseInt(totalMemorySize)) {
-				segmentList.add(new Segment_Object(base, (Integer.parseInt(totalMemorySize) - 1), null));
+			if (segmentList.size() <= 9) {
+				limit += Integer.parseInt(e.getProcessSize());
+				if (limit > Integer.parseInt(totalMemorySize)) {
+					segmentList.add(new Segment_Object(base, (Integer.parseInt(totalMemorySize) - 1), null));
+				} else {
+					segmentList.add(new Segment_Object(base, limit, e));
+					base += Integer.parseInt(e.getProcessSize());
+				}
 			} else {
-				segmentList.add(new Segment_Object(base, limit, e));
-				base += Integer.parseInt(e.getProcessSize());
+				limit = Integer.parseInt(totalMemorySize) + limit;
+				if(limit > Integer.parseInt(e.getProcessSize())) {
+					segmentList.add(new Segment_Object(base, limit, e));
+				}
 			}
 		}
 
@@ -65,7 +76,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		int z = 1;
 		System.out.println("----------------------------------------------Starting Queue");
 		while (!stopQueue) {
-			while(pauseQueue) {
+			setMemoryArrayInformation();
+			while (pauseQueue) {
 				try {
 					TimeUnit.SECONDS.sleep(1);
 				} catch (InterruptedException e1) {
@@ -73,17 +85,17 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 				}
 			}
 			updateTimeElapsed();
-			
+
 			main_View_Controller.updateWaitingQueue(waitingQueue);
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				System.out.println("-----------------------------------------------Second " + z++);
-				
+
 				for (Segment_Object e : segmentList) {
 					if (e.getObj() != null) {
 						if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
 							e.getObj().setBurstSize("0");
-							// This is where i add a new process in and update the partitions
+							// This is where i add a new process in and update the partitions -- gto
 							removeProcessFromMemory(e.getObj());
 							checkIfProcessCanBeAddedToMemory();
 						} else {
@@ -115,7 +127,11 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		} // <End While Loop>
 
 	}
-	
+
+	private void setMemoryArrayInformation() {
+		ffamavCont.setMemBlockSizeTxt(segmentList);
+		
+	}
 	private void updateTimeElapsed() {
 		timeElapsed++;
 		main_View_Controller.setTimeElapsedTxt(timeElapsed);
@@ -148,6 +164,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	public void pauseQueue() {
 		pauseQueue = !pauseQueue;
 	}
+
 	public void stopQueue() {
 		stopQueue = true;
 	}

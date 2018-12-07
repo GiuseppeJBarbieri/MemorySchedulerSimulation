@@ -2,238 +2,36 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
 
-<HBox fx:id="memoryArrayContainerHBox" prefHeight="841.0" prefWidth="384.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="memory_array_view.Memory_Array_Node_Controller">
+<HBox fx:id="memoryArrayContainerHBox" prefHeight="976.0" prefWidth="454.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="memory_array_view.Memory_Array_Node_Controller">
    <children>
-      <VBox alignment="TOP_RIGHT" prefHeight="841.0" prefWidth="63.0">
+      <VBox prefHeight="939.0" prefWidth="242.0">
          <children>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="0    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Label text="Total    " underline="true">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-         </children>
-         <padding>
-            <Insets top="13.0" />
-         </padding>
-      </VBox>
-      <VBox prefHeight="669.0" prefWidth="191.0">
-         <children>
-            <Label text="                                  -" />
-            <VBox fx:id="memoryArrayVBox" prefHeight="784.0" prefWidth="182.0" style="-fx-background-color: #416399; -fx-border-color: #000000;">
+            <VBox fx:id="memoryArrayVBox" prefHeight="940.0" prefWidth="191.0" style="-fx-background-color: #416399; -fx-border-color: #000000;">
                <children>
-                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #0ffffb; -fx-border-color: #0ffffb;">
+                  <HBox alignment="CENTER_LEFT" prefHeight="61.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #0ffffb; -fx-border-color: #0ffffb;">
                      <children>
+                        <AnchorPane prefHeight="25.0" prefWidth="56.0">
+                           <children>
+                              <Label fx:id="baseOsLbl" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="limitOSLbl" layoutX="10.0" layoutY="10.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
                         <Label text="O/S">
                            <font>
                               <Font name="Verdana" size="16.0" />
@@ -249,18 +47,29 @@
                         <Insets bottom="1.0" />
                      </padding>
                   </HBox>
-                  <VBox prefHeight="75.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #ffdd00; -fx-border-color: #ffdd00; -fx-border-width: 5;">
+                  <VBox fx:id="memBlock1VBox" prefHeight="446.0" prefWidth="189.0" style="-fx-background-color: #ffdd00;">
                      <children>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #ff6e00;">
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB1BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl1" layoutX="35.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <HBox fx:id="process1HBox" alignment="CENTER" prefHeight="31.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #ff6e00;">
                            <children>
                               <Label text="Process 1" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="processSize" text="Size" textFill="WHITE">
+                              <Label fx:id="processSize1" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst1" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -271,16 +80,21 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #381556;">
+                        <HBox fx:id="process2HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #381556;">
                            <children>
                               <Label text="Process 2" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="processSize1" text="Size" textFill="WHITE">
+                              <Label fx:id="processSize2" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst2" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -288,16 +102,197 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #1d5391;">
+                        <HBox fx:id="process3HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #1d5391;">
                            <children>
                               <Label text="Process 3" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize3" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst3" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process4HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #06636d;">
+                           <children>
+                              <Label text="Process 4" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize4" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst4" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process5HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #00600c;">
+                           <children>
+                              <Label text="Process 5" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize5" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst5" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process6HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #adad00;">
+                           <children>
+                              <Label text="Process 6" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize6" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst6" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process7HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #5e3700;">
+                           <children>
+                              <Label text="Process 7" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize7" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst7" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process8HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #ff2a00;">
+                           <children>
+                              <Label text="Process 8" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize8" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst8" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process9HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #990049;">
+                           <children>
+                              <Label text="Process 9" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize9" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst9" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process10HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #99007c;">
+                           <children>
+                              <Label text="Process 10" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processSize10" text="Size" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst10" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                           <padding>
+                              <Insets bottom="1.0" />
+                           </padding>
+                        </HBox>
+                        <HBox fx:id="process11HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #7c0099;">
+                           <children>
+                              <Label text="Process 11" textFill="WHITE" underline="true">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                               <Label fx:id="processSize11" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst11" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -305,16 +300,21 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #06636d;">
+                        <HBox fx:id="process12HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #3a0099;">
                            <children>
-                              <Label text="Process 4" textFill="WHITE" underline="true">
+                              <Label text="Process 12" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="processSize12" text="Size" textFill="WHITE">
+                              <Label fx:id="processSize11" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst12" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -322,16 +322,21 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #00600c;">
+                        <HBox fx:id="process13HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #007a99;">
                            <children>
-                              <Label text="Process 5" textFill="WHITE" underline="true">
+                              <Label text="Process 13" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                               <Label fx:id="processSize13" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst13" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -339,16 +344,21 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #adad00;">
+                        <HBox fx:id="process14HBox" alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #009951;">
                            <children>
-                              <Label text="Process 6" textFill="WHITE" underline="true">
+                              <Label text="Process 14" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                               <Label fx:id="processSize14" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst14" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -356,16 +366,21 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #5e3700;">
+                        <HBox fx:id="process15HBox" alignment="CENTER" prefHeight="32.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #346600;">
                            <children>
-                              <Label text="Process 7" textFill="WHITE" underline="true">
+                              <Label text="Process 15" textFill="WHITE" underline="true">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                               <Label fx:id="processSize15" text="Size" textFill="WHITE">
                                  <font>
-                                    <Font name="Verdana" size="16.0" />
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Label>
+                              <Label fx:id="processBurst15" text="Burst" textFill="WHITE">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
                                  </font>
                               </Label>
                            </children>
@@ -373,200 +388,186 @@
                               <Insets bottom="1.0" />
                            </padding>
                         </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #ff2a00;">
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
                            <children>
-                              <Label text="Process 8" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize16" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
+                              <Label fx:id="memB1LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
                            </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #990049;">
-                           <children>
-                              <Label text="Process 9" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize17" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #99007c;">
-                           <children>
-                              <Label text="Process 10" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize18" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #7c0099;">
-                           <children>
-                              <Label text="Process 11" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize19" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #3a0099;">
-                           <children>
-                              <Label text="Process 12" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize110" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #007a99;">
-                           <children>
-                              <Label text="Process 13" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize111" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #009951;">
-                           <children>
-                              <Label text="Process 14" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize112" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
-                        <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #346600;">
-                           <children>
-                              <Label text="Process 15" textFill="WHITE" underline="true">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="processSize113" text="Size" textFill="WHITE">
-                                 <font>
-                                    <Font name="Verdana" size="16.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                           <padding>
-                              <Insets bottom="1.0" />
-                           </padding>
-                        </HBox>
+                        </AnchorPane>
                      </children>
                      <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </padding>
                   </VBox>
-                  <VBox prefHeight="22.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #f46b6b; -fx-border-color: #f46b6b; -fx-border-width: 5;">
+                  <VBox fx:id="memBlock2VBox" prefHeight="45.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #f46b6b;">
                      <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                        <Insets bottom="5.0" top="5.0" />
                      </padding>
-                  </VBox>
-                  <VBox prefHeight="13.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #b6f458; -fx-border-color: #b6f458; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="14.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #d257f4; -fx-border-color: #d257f4; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="9.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #f4a557; -fx-border-color: #f4a557; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="11.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #00ff26; -fx-border-color: #00ff26; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="10.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #ff00aa; -fx-border-color: #ff00aa; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="12.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #ff0019; -fx-border-color: #ff0019; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="12.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #00ffb2; -fx-border-color: #00ffb2; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <VBox prefHeight="15.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #0021ff; -fx-border-color: #0021ff; -fx-border-width: 5;">
-                     <padding>
-                        <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
-                     </padding>
-                  </VBox>
-                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #0ffffb; -fx-border-color: #0ffffb;">
                      <children>
-                        <Label text="FreeSpace">
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB2BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl11" layoutX="52.0" layoutY="-4.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB2LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock3VBox" prefHeight="26.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #b6f458;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB3BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl12" layoutX="76.0" layoutY="-1.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB3LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock4VBox" prefHeight="27.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #d257f4;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB4BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl13" layoutX="61.0" layoutY="-1.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB4LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock5VBox" prefHeight="26.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #f4a557;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB5BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl14" layoutX="55.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB5LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock6VBox" prefHeight="29.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #00ff26;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB6BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl15" layoutX="50.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB6LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock7VBox" prefHeight="28.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #d173cc;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB7BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl16" layoutX="81.0" layoutY="2.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB7LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock8VBox" prefHeight="24.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #ef4c4c;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB8BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl17" layoutX="64.0" layoutY="1.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB8LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock9VBox" prefHeight="31.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #00ffb2;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB9BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl19" layoutX="92.0" layoutY="2.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB9LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="memBlock10VBox" prefHeight="41.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #4c7aef;">
+                     <padding>
+                        <Insets bottom="5.0" top="5.0" />
+                     </padding>
+                     <children>
+                        <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB10BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <Label fx:id="memB1BaseLbl18" layoutX="71.0" layoutY="-1.0" text="- Base of Memory Block 1" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane prefHeight="3.0" prefWidth="189.0">
+                           <children>
+                              <Label fx:id="memB10LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <HBox alignment="CENTER" prefHeight="28.0" prefWidth="189.0" spacing="10.0" style="-fx-background-color: #0ffffb; -fx-border-color: #000000;">
+                     <children>
+                        <Label text="Free Space">
                            <font>
                               <Font name="Verdana" size="16.0" />
                            </font>
                         </Label>
-                        <Label fx:id="osSizeLbl11" text="Size">
+                        <Label fx:id="freespaceSize" text="Size">
                            <font>
                               <Font name="Verdana" size="16.0" />
                            </font>
@@ -586,112 +587,419 @@
             <Insets />
          </HBox.margin>
       </VBox>
-      <VBox alignment="CENTER" prefHeight="841.0" prefWidth="131.0" spacing="10.0">
+      <VBox alignment="CENTER" prefHeight="976.0" prefWidth="206.0" spacing="20.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="15.0" prefWidth="160.0">
+            <VBox prefHeight="16.0" prefWidth="226.0" spacing="5.0" style="-fx-border-color: #ffdd00; -fx-border-width: 5;">
                <children>
-                  <Label text="Memory Block 1">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="15.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 1" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#ffdd00" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB1SizeTxt" alignment="CENTER_RIGHT" editable="false" prefHeight="25.0" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#ffdd00" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="1.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="31.0" prefWidth="226.0" spacing="5.0" style="-fx-border-color: #f46b6b; -fx-border-width: 5;">
                <children>
-                  <Label text="Memory Block 2">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="1.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 2" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#f46b6b" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB2SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#f46b6b" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="6.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="8.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #b6f458;">
                <children>
-                  <Label text="Memory Block 3">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="6.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 3" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#b6f458" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB3SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#b6f458" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="12.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #d257f4;">
                <children>
-                  <Label text="Memory Block 4">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="12.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 4" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#d257f4" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB4SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#d257f4" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="6.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="26.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #f4a557;">
                <children>
-                  <Label text="Memory Block 5">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="6.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 5" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <VBox prefHeight="46.0" prefWidth="226.0">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                           <children>
+                              <Circle fill="#f4a557" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                              <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="2.0">
+                                 <children>
+                                    <Label text="Size:">
+                                       <font>
+                                          <Font name="Verdana" size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <TextField fx:id="memB5SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                       <font>
+                                          <Font name="Verdana" size="12.0" />
+                                       </font>
+                                    </TextField>
+                                    <Label text="Kb">
+                                       <font>
+                                          <Font name="Verdana" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
                </children>
-            </HBox>
-            <Circle fill="#f4a557" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="7.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="26.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #00ff26;">
                <children>
-                  <Label text="Memory Block 6">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="7.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 6" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#00ff26" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="226.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB6SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#00ff26" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="5.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #d173cc;">
                <children>
-                  <Label text="Memory Block 7">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="5.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 7" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#d173cc" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="226.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB7SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#ff00aa" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="5.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #ef4c4c;">
                <children>
-                  <Label text="Memory Block 8">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="5.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 8" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#ef4c4c" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="226.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB8SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#ff0019" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="3.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #00ffb2;">
                <children>
-                  <Label text="Memory Block 9">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="3.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 9" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#00ffb2" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="226.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB9SizeTxt" alignment="CENTER_RIGHT" editable="false" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#00ffb2" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
-            <HBox alignment="CENTER" prefHeight="0.0" prefWidth="160.0">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="0.0" prefWidth="226.0" spacing="5.0" style="-fx-border-width: 5; -fx-border-color: #4c7aef;">
                <children>
-                  <Label text="Memory Block 10">
-                     <font>
-                        <Font name="Verdana" size="14.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER_LEFT" prefHeight="0.0" prefWidth="160.0">
+                     <children>
+                        <Label text="Memory Block 10" underline="true">
+                           <font>
+                              <Font name="Verdana" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="126.0" spacing="10.0">
+                     <children>
+                        <Circle fill="#4c7aef" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" spacing="2.0">
+                           <children>
+                              <Label text="Size:">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="memB10SizeTxt" alignment="CENTER_RIGHT" editable="false" prefHeight="25.0" prefWidth="75.0">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </TextField>
+                              <Label text="Kb">
+                                 <font>
+                                    <Font name="Verdana" size="14.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                     </children>
+                  </HBox>
                </children>
-            </HBox>
-            <Circle fill="#0021ff" radius="12.0" stroke="BLACK" strokeType="INSIDE" />
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </VBox>
          </children>
          <padding>
-            <Insets left="5.0" />
+            <Insets left="15.0" />
          </padding>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
       </VBox>
    </children>
 </HBox>

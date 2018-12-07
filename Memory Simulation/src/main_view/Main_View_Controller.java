@@ -6,6 +6,7 @@ import java.util.ResourceBundle;
 
 import alerts.Missing_Information_Alert;
 import algorithm.First_Fit_Algorithm_Thread;
+import controller.FFA_To_MemArrView_Controller;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -48,6 +49,7 @@ public class Main_View_Controller implements Initializable {
 	private ArrayList<Waiting_Process_Obj> waitingQueue;
 	private First_Fit_Algorithm_Thread ffat;
 	private Thread t;
+	private Display_Memory_Array_Node memArrayNode;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -67,7 +69,7 @@ public class Main_View_Controller implements Initializable {
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
 		
-		Display_Memory_Array_Node memArrayNode = new Display_Memory_Array_Node(memoryBox);
+		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 		
 		for(int i = 0; i < 15; i++) {
 			processIdChoiceBox.getSelectionModel().select(i);
@@ -105,7 +107,9 @@ public class Main_View_Controller implements Initializable {
 			new Missing_Information_Alert("Missing memory array size!");
 		} else {
 			if(algorithmChoiceBox.getSelectionModel().getSelectedIndex() == 0) {
-				ffat = new First_Fit_Algorithm_Thread(this, waitingQueue, totalMemoryTxt.getText(), cpuSpeedChoice.getValue());
+				FFA_To_MemArrView_Controller ffamavCont = new FFA_To_MemArrView_Controller(ffat, memArrayNode);
+				ffat = new First_Fit_Algorithm_Thread(this, waitingQueue, totalMemoryTxt.getText(), cpuSpeedChoice.getValue(), ffamavCont);
+				
 				t = new Thread(ffat);
 				t.setDaemon(true);
 				t.start();
