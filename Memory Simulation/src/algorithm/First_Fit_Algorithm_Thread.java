@@ -16,9 +16,11 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private boolean stopQueue = false;
 	private boolean pauseQueue = false;
 	private Main_View_Controller main_View_Controller;
+	private int timeElapsed;
 
 	public First_Fit_Algorithm_Thread(Main_View_Controller main_View_Controller,
 			ArrayList<Waiting_Process_Obj> waitingQueue, String totalMemorySize, Double cpuSpeed) {
+		timeElapsed = 0;
 		this.main_View_Controller = main_View_Controller;
 		this.waitingQueue = waitingQueue;
 		this.totalMemorySize = totalMemorySize;
@@ -63,7 +65,6 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		int z = 1;
 		System.out.println("----------------------------------------------Starting Queue");
 		while (!stopQueue) {
-			
 			while(pauseQueue) {
 				try {
 					TimeUnit.SECONDS.sleep(1);
@@ -71,6 +72,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 					e1.printStackTrace();
 				}
 			}
+			updateTimeElapsed();
+			
 			main_View_Controller.updateWaitingQueue(waitingQueue);
 			try {
 				TimeUnit.SECONDS.sleep(1);
@@ -111,6 +114,11 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 
 		} // <End While Loop>
 
+	}
+	
+	private void updateTimeElapsed() {
+		timeElapsed++;
+		main_View_Controller.setTimeElapsedTxt(timeElapsed);
 	}
 
 	private void checkIfProcessCanBeAddedToMemory() {

@@ -28,11 +28,11 @@ public class Main_View_Controller implements Initializable {
 	@FXML
 	private Button addProcessBtn, compactBtn, restartBtn, startBtn, stopBtn;
 	@FXML
-	private ChoiceBox<String> algorithmChoiceBox, processIdChoiceBox;
+	private ChoiceBox<String> algorithmChoiceBox, processIdChoiceBox, partitionTypeChoiceBox, partitionSizeTypeChoiceBox;
 	@FXML
 	private TableColumn<Waiting_Process_Obj, String> burstCol, processCol, sizeCol;
 	@FXML
-	private TextField totalMemoryTxt, processSizeTxt, burstTimeTxt;
+	private TextField totalMemoryTxt, processSizeTxt, burstTimeTxt, timeElapsedTxt;
 	@FXML
 	private TableView<Waiting_Process_Obj> waitingQueueTbl;
 	@FXML
@@ -43,10 +43,11 @@ public class Main_View_Controller implements Initializable {
 	private String[] processList = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10", "P11", "P12", "P13",
 			"P14", "P15", };
 	private String[] algorithmList = { "First-Fit", "Best-Fit", "Worst-Fit" };
+	private String[] partitionTypeList = { "Fixed Partitioning" };
+	private String[] partitionSizeTypeList = { "Equal", "Unequal" };
 	private ArrayList<Waiting_Process_Obj> waitingQueue;
 	private First_Fit_Algorithm_Thread ffat;
 	private Thread t;
-	private Display_Memory_Array_Node memArrayNode;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -54,11 +55,20 @@ public class Main_View_Controller implements Initializable {
 		initializeTblCol();
 		initializeChoiceBox();
 		textFieldInitialization();
+		
 		algorithmChoiceBox.getSelectionModel().select(0);
 		processIdChoiceBox.getSelectionModel().select(0);
+		partitionTypeChoiceBox.getSelectionModel().select(0);
+		//Setup tooltip that says if it's equal it will equally assign each partition size
+		//to the size of the biggest process running (maybe adjust the memory size accordingly)
+		partitionSizeTypeChoiceBox.getSelectionModel().select(0);
+		
 		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
+		
+		Display_Memory_Array_Node memArrayNode = new Display_Memory_Array_Node(memoryBox);
+		
 		for(int i = 0; i < 15; i++) {
 			processIdChoiceBox.getSelectionModel().select(i);
 			String process = processIdChoiceBox.getSelectionModel().getSelectedItem();
@@ -66,11 +76,11 @@ public class Main_View_Controller implements Initializable {
 			int burst = (int) (Math.random()*100);
 			waitingQueue.add(new Waiting_Process_Obj(process, Integer.toString(size), Integer.toString(burst)));
 		}
+		
 		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 		totalMemoryTxt.setText("600");
 		
-		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 	}
 	
 	public void updateWaitingQueue(ArrayList<Waiting_Process_Obj> queue) {
@@ -159,11 +169,19 @@ public class Main_View_Controller implements Initializable {
 		processIdChoiceBox.setItems(processObsList);
 		ObservableList<String> algorithmObsList = FXCollections.observableArrayList(algorithmList);
 		algorithmChoiceBox.setItems(algorithmObsList);
+		ObservableList<String> partitionTypeObsList = FXCollections.observableArrayList(partitionTypeList);
+		partitionTypeChoiceBox.setItems(partitionTypeObsList);
+		ObservableList<String> partitionSizeTypeObsList = FXCollections.observableArrayList(partitionSizeTypeList);
+		partitionSizeTypeChoiceBox.setItems(partitionSizeTypeObsList);
 	}
 
 	private void initializeTblCol() {
 		burstCol.setCellValueFactory(new PropertyValueFactory<Waiting_Process_Obj, String>("burstSize"));
 		processCol.setCellValueFactory(new PropertyValueFactory<Waiting_Process_Obj, String>("processId"));
 		sizeCol.setCellValueFactory(new PropertyValueFactory<Waiting_Process_Obj, String>("processSize"));
+	}
+
+	public void setTimeElapsedTxt(int timeElapsed) {
+		timeElapsedTxt.setText(Integer.toString(timeElapsed));
 	}
 }
