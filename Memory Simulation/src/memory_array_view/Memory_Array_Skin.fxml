@@ -18,7 +18,7 @@
                <children>
                   <AnchorPane prefHeight="0.0" prefWidth="240.0">
                      <children>
-                        <Label fx:id="baseOsLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="baseOsLbl" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font>
@@ -37,7 +37,7 @@
                               <Font name="Verdana" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="osSizeLbl1" text="Size" underline="true">
+                        <Label fx:id="osSizeLbl1" text="200" underline="true">
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font>
@@ -47,7 +47,7 @@
                   </HBox>
                   <AnchorPane prefHeight="0.0" prefWidth="240.0">
                      <children>
-                        <Label fx:id="limitOSLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                        <Label fx:id="limitOSLbl" layoutX="14.0" layoutY="6.0" text="199" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font>
@@ -63,7 +63,7 @@
             </VBox>
             <VBox fx:id="memBlock1VBox" prefHeight="33.0" prefWidth="232.0" style="-fx-background-color: #ffdd00;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox1" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB1BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -77,7 +77,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox1" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB1LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -95,7 +95,7 @@
             </VBox>
             <VBox fx:id="memBlock2VBox" prefHeight="21.0" prefWidth="232.0" spacing="7.0" style="-fx-background-color: #f46b6b;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox2" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB2BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -109,7 +109,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox2" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB2LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -127,7 +127,7 @@
             </VBox>
             <VBox fx:id="memBlock3VBox" prefHeight="26.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #b6f458;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox3" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB3BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -141,7 +141,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox3" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB3LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -159,7 +159,7 @@
             </VBox>
             <VBox fx:id="memBlock4VBox" prefHeight="27.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #fffa00;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox4" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB4BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -173,7 +173,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox4" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB4LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -191,7 +191,7 @@
             </VBox>
             <VBox fx:id="memBlock5VBox" prefHeight="26.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #f4a557;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox5" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB5BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -205,7 +205,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox5" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB5LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -223,7 +223,7 @@
             </VBox>
             <VBox fx:id="memBlock6VBox" prefHeight="29.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #00ff26;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox6" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB6BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -237,7 +237,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox6" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB6LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -255,7 +255,7 @@
             </VBox>
             <VBox fx:id="memBlock7VBox" prefHeight="28.0" prefWidth="189.0" spacing="7.0" style="-fx-background-color: #d173cc;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox7" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB7BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -269,7 +269,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox7" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB7LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -287,7 +287,7 @@
             </VBox>
             <VBox fx:id="memBlock8VBox" prefHeight="3.0" prefWidth="232.0" spacing="7.0" style="-fx-background-color: #ef4c4c;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox8" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB8BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -301,7 +301,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox8" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB8LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -319,7 +319,7 @@
             </VBox>
             <VBox fx:id="memBlock9VBox" prefHeight="0.0" prefWidth="232.0" spacing="7.0" style="-fx-background-color: #00ffb2;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox9" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB9BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -333,7 +333,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox9" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB9LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -351,7 +351,7 @@
             </VBox>
             <VBox fx:id="memBlock10VBox" prefHeight="16.0" prefWidth="232.0" spacing="7.0" style="-fx-background-color: #4c7aef;">
                <children>
-                  <AnchorPane prefHeight="23.0" prefWidth="189.0">
+                  <AnchorPane fx:id="baseMemBHBox10" prefHeight="23.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB10BaseLbl" layoutX="14.0" layoutY="6.0" text="Base" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
                            <font>
@@ -365,7 +365,7 @@
                         </Label>
                      </children>
                   </AnchorPane>
-                  <AnchorPane prefHeight="3.0" prefWidth="189.0">
+                  <AnchorPane fx:id="limitMemBHBox10" prefHeight="3.0" prefWidth="189.0">
                      <children>
                         <Label fx:id="memB10LimitLbl" layoutX="14.0" layoutY="6.0" text="Limit" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
                            <font>
@@ -1090,7 +1090,7 @@
                               <Font name="Verdana" size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="processSize11" text="Size" textFill="WHITE">
+                        <Label fx:id="processSize12" text="Size" textFill="WHITE">
                            <font>
                               <Font name="Verdana" size="13.0" />
                            </font>

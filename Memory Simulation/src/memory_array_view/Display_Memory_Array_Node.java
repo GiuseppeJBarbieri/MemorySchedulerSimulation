@@ -35,4 +35,5 @@ public class Display_Memory_Array_Node {
 	public void setMemBlockSizeTxtFields(ArrayList<Segment_Object> segmentList) {
 		controller.setMemBlockTxtFields(segmentList);
 	}
+
 }

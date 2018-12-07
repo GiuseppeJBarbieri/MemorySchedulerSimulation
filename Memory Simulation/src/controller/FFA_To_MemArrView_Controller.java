@@ -19,5 +19,5 @@ public class FFA_To_MemArrView_Controller {
 	public void setMemBlockSizeTxt(ArrayList<Segment_Object> segmentList) {
 		memArrayNode.setMemBlockSizeTxtFields(segmentList);
 	}
-	
+
 }

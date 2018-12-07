@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import controller.FFA_To_MemArrView_Controller;
+import javafx.application.Platform;
 import main_view.Main_View_Controller;
 import model.Segment_Object;
 import model.Waiting_Process_Obj;
@@ -19,6 +20,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private Main_View_Controller main_View_Controller;
 	private int timeElapsed;
 	private FFA_To_MemArrView_Controller ffamavCont;
+	private int freeMemBlocks;
+	private int inUseMemBlocks;
 
 	public First_Fit_Algorithm_Thread(Main_View_Controller main_View_Controller,
 			ArrayList<Waiting_Process_Obj> waitingQueue, String totalMemorySize, Double cpuSpeed,
@@ -30,6 +33,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		this.cpuSpeed = cpuSpeed;
 		segmentList = new ArrayList<>();
 		this.ffamavCont = ffamavCont;
+		freeMemBlocks = 0;
+		inUseMemBlocks = 0;
 	}
 
 	@Override
@@ -40,10 +45,10 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		// then it remvoes them from the queue and updates the
 		// waiting queue on the main view
 
-		int base = 0;
-		int limit = 0;
+		int base = 200;
+		int limit = 200;
 		for (Waiting_Process_Obj e : waitingQueue) {
-			if (segmentList.size() <= 9) {
+			if (segmentList.size() < 9) {
 				limit += Integer.parseInt(e.getProcessSize());
 				if (limit > Integer.parseInt(totalMemorySize)) {
 					segmentList.add(new Segment_Object(base, (Integer.parseInt(totalMemorySize) - 1), null));
@@ -55,27 +60,19 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 				limit = Integer.parseInt(totalMemorySize) + limit;
 				if(limit > Integer.parseInt(e.getProcessSize())) {
 					segmentList.add(new Segment_Object(base, limit, e));
+					break;
 				}
 			}
 		}
 
-		System.out.println("1. ----------Segment List TBl---------");
 		for (Segment_Object e : segmentList) {
 			waitingQueue.remove(e.getObj());
-			if (e.getObj() != null) {
-				System.out.println(
-						"PID: " + e.getObj().getProcessId() + " BASE: " + e.getBase() + " Limit:" + e.getLimit());
-			}
-		}
-		System.out.println("1. ---Waiting Queue---------");
-		for (Waiting_Process_Obj e : waitingQueue) {
-			System.out.println(e.getProcessId());
 		}
 
 		main_View_Controller.updateWaitingQueue(waitingQueue);
-		int z = 1;
-		System.out.println("----------------------------------------------Starting Queue");
+		//Starting queue loop--------------------------------------------------------------------------------------------------
 		while (!stopQueue) {
+			main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks), Integer.toString(inUseMemBlocks));
 			setMemoryArrayInformation();
 			while (pauseQueue) {
 				try {
@@ -89,8 +86,6 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 			main_View_Controller.updateWaitingQueue(waitingQueue);
 			try {
 				TimeUnit.SECONDS.sleep(1);
-				System.out.println("-----------------------------------------------Second " + z++);
-
 				for (Segment_Object e : segmentList) {
 					if (e.getObj() != null) {
 						if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
@@ -109,28 +104,30 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 				e1.printStackTrace();
 			}
 
-			System.out.println("-------------Segment List TBl---------");
+			inUseMemBlocks = 0;
+			freeMemBlocks = 0;
 			for (Segment_Object e : segmentList) {
 				waitingQueue.remove(e.getObj());
+				
 				if (e.getObj() != null) {
-					System.out.println("PID: " + e.getObj().getProcessId() + " Burst: " + e.getObj().getBurstSize());
+					inUseMemBlocks++;
 				} else {
-					System.out.println("PID: None " + "BASE: " + e.getBase() + " Limit:" + e.getLimit());
+					freeMemBlocks++;
 				}
 			}
 
-			System.out.println("---------Waiting QUEUE---------------");
-			for (Waiting_Process_Obj e : waitingQueue) {
-				System.out.println(e.getProcessId());
-			}
-
-		} // <End While Loop>
+		}
 
 	}
-
+	
 	private void setMemoryArrayInformation() {
-		ffamavCont.setMemBlockSizeTxt(segmentList);
-		
+		//also sets free blocks and blocks in use txtfields
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				ffamavCont.setMemBlockSizeTxt(segmentList);				
+			}
+		});
 	}
 	private void updateTimeElapsed() {
 		timeElapsed++;
@@ -138,12 +135,10 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	}
 
 	private void checkIfProcessCanBeAddedToMemory() {
-		int i = 0;
 		for (Waiting_Process_Obj e : waitingQueue) {
 			for (Segment_Object f : segmentList) {
 				if ((f.getLimit() - f.getBase()) >= Integer.parseInt(e.getProcessSize()) && f.getObj() == null) {
 					f.setObj(e);
-					i++;
 					break;
 				}
 			}
@@ -151,7 +146,6 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	}
 
 	private void removeProcessFromMemory(Waiting_Process_Obj obj) {
-		System.out.println("REMOVING");
 		for (Segment_Object e : segmentList) {
 			if (e.getObj() != null) {
 				if (e.getObj().equals(obj)) {
@@ -161,8 +155,9 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		}
 	}
 
-	public void pauseQueue() {
+	public void pauseQueue(double cpuSpeed) {
 		pauseQueue = !pauseQueue;
+		this.cpuSpeed = cpuSpeed;
 	}
 
 	public void stopQueue() {
@@ -170,7 +165,6 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	}
 
 	public void updateWaitingQueue(Waiting_Process_Obj process) {
-		System.out.println("ADDING------------------------>");
 		waitingQueue.add(process);
 	}
 
