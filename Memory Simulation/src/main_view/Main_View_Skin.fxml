@@ -229,7 +229,7 @@
                   <Font name="Verdana" size="15.0" />
                </font>
             </Label>
-            <Slider fx:id="cpuSpeedChoice" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="48.0" prefWidth="202.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Slider fx:id="cpuSpeedChoice" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="-5.0" minorTickCount="0" prefHeight="48.0" prefWidth="202.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
             <Label text="Partitioning Type">
                <font>
                   <Font name="Verdana" size="15.0" />

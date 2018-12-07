@@ -38,14 +38,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 			processBurst7, processBurst8, processBurst9, processBurst10, processBurst11, processBurst12, processBurst13,
 			processBurst14, processBurst15;
 	@FXML
-	private Label osSizeLbl1, memB1LimitLbl, memB2LimitLbl, memB3LimitLbl, memB4LimitLbl, memB5LimitLbl, memB6LimitLbl,
+	private Label memB1LimitLbl, memB2LimitLbl, memB3LimitLbl, memB4LimitLbl, memB5LimitLbl, memB6LimitLbl,
 			memB7LimitLbl, memB8LimitLbl, memB9LimitLbl, memB10LimitLbl;
 	@FXML
 	private Label memB1BaseLbl, memB2BaseLbl, memB3BaseLbl, memB4BaseLbl, memB5BaseLbl, memB6BaseLbl, memB7BaseLbl,
 			memB8BaseLbl, memB9BaseLbl, memB10BaseLbl;
 	@FXML
-	private Label limitOSLbl, freespaceSize, baseOsLbl;
-
+	private Label limitOSLbl, freespaceSize, baseOsLbl, freeSpaceBaseLbl, freeSpaceSize, freeSpaceLimitLbl, osSizeLbl1;
+	
 	private ArrayList<TextField> memBlockSizeTxtList;
 	private ArrayList<Label> processSizeLblList;
 	private ArrayList<Label> processBurstLblList;
