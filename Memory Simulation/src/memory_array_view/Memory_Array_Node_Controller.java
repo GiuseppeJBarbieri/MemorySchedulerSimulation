@@ -27,7 +27,7 @@ public class Memory_Array_Node_Controller implements Initializable {
 			process8HBox, process9HBox, process10HBox, process11HBox, process12HBox, process13HBox, process14HBox,
 			process15HBox;
 	@FXML
-	private TextField memB1SizeTxt, memB2SizeTxt, memB3SizeTxt, memB4SizeTxt, memB5SizeTxt, memB6SizeTxt, memB7SizeTxt,
+	private TextField freeBlocksTxt, memBlocksInUseTxt, memB1SizeTxt, memB2SizeTxt, memB3SizeTxt, memB4SizeTxt, memB5SizeTxt, memB6SizeTxt, memB7SizeTxt,
 			memB8SizeTxt, memB9SizeTxt, memB10SizeTxt;
 	@FXML
 	private Label processSize1, processSize2, processSize3, processSize4, processSize5, processSize6, processSize7,
