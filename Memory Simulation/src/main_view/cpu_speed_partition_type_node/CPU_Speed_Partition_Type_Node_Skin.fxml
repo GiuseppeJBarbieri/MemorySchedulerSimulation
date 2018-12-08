@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="199.0" prefWidth="231.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="199.0" prefWidth="231.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.cpu_speed_partition_type_node.CPU_Speed_Partition_Type_Node_Controller">
    <children>
       <Label text="CPU Speed (x speed)">
          <font>

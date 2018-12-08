@@ -26,7 +26,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main_view.add_process_node.Display_Add_Process_Node;
 import main_view.cpu_speed_partition_type_node.Display_CPU_Speed_Partition_Type_Node;
-import main_view.memory_array_information.Display_Memory_Array_Info_Node;
+import main_view.memory_array_information_node.Display_Memory_Array_Info_Node;
 import main_view.memory_array_node.Display_Memory_Array_Node;
 import main_view.setup_app_node.Display_Setup_App_Node;
 import main_view.simulation_controls_node.Display_Simulation_Controls_Node;
@@ -78,6 +78,7 @@ public class Main_View_Controller implements Initializable {
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		/*
 		waitingQueue = new ArrayList<>();
 		initializeTblCol();
 		initializeChoiceBox();
@@ -102,8 +103,8 @@ public class Main_View_Controller implements Initializable {
 		stopBtn.setOnAction(e -> stopSimulation());
 		restartBtn.setOnAction(e -> restartSimulation());
 		setMemorySizeBtn.setOnAction(e -> setTotalMemorySpace());
-		
-		memArrayNode = new Display_Memory_Array_Node(memoryBox);
+		*/
+		//memArrayNode = new Display_Memory_Array_Node(memoryBox);
 		
 		addProccessNode = new Display_Add_Process_Node();
 		displayCPUSpeedNode = new Display_CPU_Speed_Partition_Type_Node();
@@ -113,14 +114,15 @@ public class Main_View_Controller implements Initializable {
 		displayWaitingQueueNode = new Display_Waiting_Queue_Node();
 		
 		footerHBox.getChildren().addAll(displayWaitingQueueNode.getNode(), displaySimControlsNode.getNode(), displayMemArrInfoNode.getNode());
-		processCpuSpeedHBox.getChildren().addAll(addProccessNode.getNode(), displayCPUSpeedNode.getNode());
+		processCpuSpeedHBox.getChildren().addAll(addProccessNode.getNode(),  displayCPUSpeedNode.getNode());
 		leftSetupAppVBox.getChildren().addAll(displaySetupAppNode.getNode());
+		/*
 		ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 		totalMemoryTxt.setText("2048");
-
+*/
 	}
-
+/*
 	private void restartSimulation() {
 		setMemorySizeBtn.setDisable(false);
 		stopBtn.setText("Stop Simulation");
@@ -411,5 +413,5 @@ public class Main_View_Controller implements Initializable {
 	public void setTimeElapsedTxt(int timeElapsed) {
 		timeElapsedTxt.setText(Integer.toString(timeElapsed));
 	}
-
+*/
 }

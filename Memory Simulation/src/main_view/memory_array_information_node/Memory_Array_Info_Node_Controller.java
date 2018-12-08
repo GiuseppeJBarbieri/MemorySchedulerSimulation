@@ -1,4 +1,4 @@
-package main_view.memory_array_information;
+package main_view.memory_array_information_node;
 
 import java.net.URL;
 import java.util.ResourceBundle;

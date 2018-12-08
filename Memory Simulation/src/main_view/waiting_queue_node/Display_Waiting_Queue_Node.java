@@ -9,16 +9,19 @@ import javafx.scene.layout.VBox;
 public class Display_Waiting_Queue_Node {
 	
 	private Waiting_Queue_Node_Controller controller;
+	private HBox root;
 	
 	public Display_Waiting_Queue_Node() {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_view.waiting_queue_box/Waiting_Queue_Box_Skin.fxml"));
-			HBox root = loader.load();
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_view/waiting_queue_node/Waiting_Queue_Node_Skin.fxml"));
+			root = loader.load();
 			controller = loader.getController();
-			vbox.getChildren().add(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
+	}
+	public HBox getNode() {
+		return root;
 	}
 }

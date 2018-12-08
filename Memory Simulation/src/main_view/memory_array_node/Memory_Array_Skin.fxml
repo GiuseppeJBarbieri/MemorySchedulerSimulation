@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<HBox fx:id="memoryArrayContainerHBox" alignment="TOP_RIGHT" prefHeight="976.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="memory_array_view.Memory_Array_Node_Controller">
+<HBox fx:id="memoryArrayContainerHBox" alignment="TOP_RIGHT" prefHeight="976.0" prefWidth="470.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.memory_array_node.Memory_Array_Node_Controller">
    <children>
       <VBox fx:id="memoryArrayVBox" prefHeight="1043.0" prefWidth="242.0" style="-fx-background-color: #416399; -fx-border-color: #000000; -fx-border-width: 5;">
          <children>
