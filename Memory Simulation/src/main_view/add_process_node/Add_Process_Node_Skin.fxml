@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="189.0" prefWidth="289.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">
+         <children>
+            <Label text="Process Id">
+               <font>
+                  <Font name="Verdana" size="15.0" />
+               </font>
+            </Label>
+            <ChoiceBox fx:id="processIdChoiceBox" prefHeight="25.0" prefWidth="84.0" />
+         </children>
+      </HBox>
+      <Line endX="146.2928924560547" endY="-0.20710676908493042" opacity="0.35" startX="-100.0" />
+      <HBox prefHeight="59.0" prefWidth="250.0" spacing="15.0">
+         <children>
+            <VBox alignment="TOP_CENTER" prefHeight="59.0" prefWidth="156.0" spacing="5.0">
+               <children>
+                  <Label text="Process Size (kb)">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="processSizeTxt" alignment="CENTER" />
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="156.0" spacing="5.0">
+               <children>
+                  <Label text="Burst Time (s)">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="burstTimeTxt" alignment="CENTER" />
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Button fx:id="addProcessBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="255.0" text="Add Process To Wait Queue">
+         <font>
+            <Font name="Verdana" size="13.0" />
+         </font>
+      </Button>
+   </children>
+   <padding>
+      <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+   </padding>
+</VBox>

@@ -1,4 +1,4 @@
-package main_view.memory_array_box;
+package main_view.memory_array_node;
 
 import java.net.URL;
 import java.util.ArrayList;

@@ -3,7 +3,7 @@ package controller;
 import java.util.ArrayList;
 
 import algorithm.First_Fit_Algorithm_Thread;
-import main_view.memory_array_box.Display_Memory_Array_Node;
+import main_view.memory_array_node.Display_Memory_Array_Node;
 import model.Segment_Object;
 
 public class FFA_To_MemArrView_Controller {
