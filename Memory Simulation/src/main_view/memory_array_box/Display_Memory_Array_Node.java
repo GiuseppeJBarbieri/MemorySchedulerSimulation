@@ -1,13 +1,4 @@
-/*
- * 
- * Created By Giuseppe Barbieri
- * Cpu Scheduler App
- * Com 310-S01
- * 11/04/2018
- * 
- */
-
-package memory_array_view;
+package main_view.memory_array_box;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,6 +7,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import model.Segment_Object;
+
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class loads the Memory Array Node that is used to show 
+ * the processes and memory segments as they move in and out of memory.
+ * 
+ */
 
 public class Display_Memory_Array_Node {
 	private Memory_Array_Node_Controller controller;

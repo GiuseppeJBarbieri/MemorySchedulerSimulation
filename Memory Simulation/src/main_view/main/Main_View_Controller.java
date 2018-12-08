@@ -1,4 +1,4 @@
-package main_view;
+package main_view.main;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -23,8 +23,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
-import memory_array_view.Display_Memory_Array_Node;
-import model.Waiting_Process_Obj;
+import main_view.memory_array_box.Display_Memory_Array_Node;
+import model.Process_Object;
 
 public class Main_View_Controller implements Initializable {
 
@@ -34,11 +34,11 @@ public class Main_View_Controller implements Initializable {
 	private ChoiceBox<String> algorithmChoiceBox, processIdChoiceBox, partitionTypeChoiceBox,
 			partitionSizeTypeChoiceBox;
 	@FXML
-	private TableColumn<Waiting_Process_Obj, String> burstCol, processCol, sizeCol;
+	private TableColumn<Process_Object, String> burstCol, processCol, sizeCol;
 	@FXML
 	private TextField freeBlocksTxt, memBlocksInUseTxt, totalMemoryTxt, processSizeTxt, burstTimeTxt, timeElapsedTxt;
 	@FXML
-	private TableView<Waiting_Process_Obj> waitingQueueTbl;
+	private TableView<Process_Object> waitingQueueTbl;
 	@FXML
 	private Slider cpuSpeedChoice;
 	@FXML
@@ -51,7 +51,7 @@ public class Main_View_Controller implements Initializable {
 	private String[] algorithmList = { "First-Fit", "Best-Fit", "Worst-Fit" };
 	private String[] partitionTypeList = { "Fixed Partitioning" };
 	private String[] partitionSizeTypeList = { "Unequal" };
-	private ArrayList<Waiting_Process_Obj> waitingQueue;
+	private ArrayList<Process_Object> waitingQueue;
 	private First_Fit_Algorithm_Thread ffat;
 	private Thread t;
 	private Display_Memory_Array_Node memArrayNode;
@@ -84,7 +84,7 @@ public class Main_View_Controller implements Initializable {
 		setMemorySizeBtn.setOnAction(e -> setTotalMemorySpace());
 		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 
-		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
+		ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 		totalMemoryTxt.setText("2048");
 
@@ -99,28 +99,28 @@ public class Main_View_Controller implements Initializable {
 		stopBtn.setDisable(true);
 		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 		waitingQueue.clear();
-		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
+		ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 
 	}
 
 	private void presetInformation() {
 		if (yPreloadRBtn.isSelected()) {
-			waitingQueue.add(new Waiting_Process_Obj("P1", Integer.toString(130), Integer.toString(5)));
-			waitingQueue.add(new Waiting_Process_Obj("P2", Integer.toString(230), Integer.toString(68)));
-			waitingQueue.add(new Waiting_Process_Obj("P3", Integer.toString(330), Integer.toString(12)));
-			waitingQueue.add(new Waiting_Process_Obj("P4", Integer.toString(420), Integer.toString(28)));
-			waitingQueue.add(new Waiting_Process_Obj("P5", Integer.toString(140), Integer.toString(94)));
-			waitingQueue.add(new Waiting_Process_Obj("P6", Integer.toString(200), Integer.toString(12)));
-			waitingQueue.add(new Waiting_Process_Obj("P7", Integer.toString(500), Integer.toString(83)));
-			waitingQueue.add(new Waiting_Process_Obj("P8", Integer.toString(540), Integer.toString(86)));
-			waitingQueue.add(new Waiting_Process_Obj("P9", Integer.toString(220), Integer.toString(41)));
-			waitingQueue.add(new Waiting_Process_Obj("P10", Integer.toString(490), Integer.toString(48)));
-			waitingQueue.add(new Waiting_Process_Obj("P11", Integer.toString(280), Integer.toString(4)));
-			waitingQueue.add(new Waiting_Process_Obj("P12", Integer.toString(160), Integer.toString(82)));
-			waitingQueue.add(new Waiting_Process_Obj("P13", Integer.toString(300), Integer.toString(41)));
-			waitingQueue.add(new Waiting_Process_Obj("P14", Integer.toString(540), Integer.toString(30)));
-			waitingQueue.add(new Waiting_Process_Obj("P15", Integer.toString(130), Integer.toString(32)));
+			waitingQueue.add(new Process_Object("P1", Integer.toString(130), Integer.toString(5)));
+			waitingQueue.add(new Process_Object("P2", Integer.toString(230), Integer.toString(68)));
+			waitingQueue.add(new Process_Object("P3", Integer.toString(330), Integer.toString(12)));
+			waitingQueue.add(new Process_Object("P4", Integer.toString(420), Integer.toString(28)));
+			waitingQueue.add(new Process_Object("P5", Integer.toString(140), Integer.toString(94)));
+			waitingQueue.add(new Process_Object("P6", Integer.toString(200), Integer.toString(12)));
+			waitingQueue.add(new Process_Object("P7", Integer.toString(500), Integer.toString(83)));
+			waitingQueue.add(new Process_Object("P8", Integer.toString(540), Integer.toString(86)));
+			waitingQueue.add(new Process_Object("P9", Integer.toString(220), Integer.toString(41)));
+			waitingQueue.add(new Process_Object("P10", Integer.toString(490), Integer.toString(48)));
+			waitingQueue.add(new Process_Object("P11", Integer.toString(280), Integer.toString(4)));
+			waitingQueue.add(new Process_Object("P12", Integer.toString(160), Integer.toString(82)));
+			waitingQueue.add(new Process_Object("P13", Integer.toString(300), Integer.toString(41)));
+			waitingQueue.add(new Process_Object("P14", Integer.toString(540), Integer.toString(30)));
+			waitingQueue.add(new Process_Object("P15", Integer.toString(130), Integer.toString(32)));
 		}
 
 	}
@@ -141,11 +141,11 @@ public class Main_View_Controller implements Initializable {
 		memBlocksInUseTxt.setText(inUseBlocks);
 	}
 
-	public void updateWaitingQueue(ArrayList<Waiting_Process_Obj> queue) {
+	public void updateWaitingQueue(ArrayList<Process_Object> queue) {
 		ArrayList<String> processesUsed = new ArrayList<>();
 		waitingQueue = queue;
 		if (waitingQueue.size() < 15) {
-			for (Waiting_Process_Obj e : waitingQueue) {
+			for (Process_Object e : waitingQueue) {
 				processesUsed.add(e.getProcessId());
 			}
 			int p1 = 0;
@@ -201,69 +201,69 @@ public class Main_View_Controller implements Initializable {
 			if (yGenerateRBtn.isSelected()) {
 				if (p1 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P1", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P1", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p2 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P2", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P2", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p3 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P3", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P3", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p4 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P4", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P4", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p5 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P5", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P5", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p6 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P6", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P6", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p7 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P7", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P7", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p8 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P8", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P8", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p9 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P9", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P9", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p10 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P10", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P10", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p11 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P11", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P11", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p12 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P12", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P12", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p13 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P13", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P13", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p14 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P14", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P14", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				} else if (p15 == 0) {
 					waitingQueue
-							.add(new Waiting_Process_Obj("P15", (Integer.toString((int) (Math.random() * 100 + 100))),
+							.add(new Process_Object("P15", (Integer.toString((int) (Math.random() * 100 + 100))),
 									(Integer.toString((int) (Math.random() * 100 + 10)))));
 				}
 			}
 		}
 
-		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
+		ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 	}
 
@@ -313,17 +313,17 @@ public class Main_View_Controller implements Initializable {
 			} else {
 				if (ffat != null) {
 					ffat.updateWaitingQueue(
-							new Waiting_Process_Obj(processIdChoiceBox.getSelectionModel().getSelectedItem(),
+							new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(),
 									processSizeTxt.getText(), burstTimeTxt.getText()));
 				}
-				ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
+				ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
 				waitingQueueTbl.setItems(tableList);
 			}
 		}
 	}
 
 	private boolean checkIfProccessInWaitingQueue(String processId) {
-		for (Waiting_Process_Obj e : waitingQueue) {
+		for (Process_Object e : waitingQueue) {
 			if (e.getProcessId().equals(processId)) {
 				return true;
 			}
@@ -372,9 +372,9 @@ public class Main_View_Controller implements Initializable {
 	}
 
 	private void initializeTblCol() {
-		burstCol.setCellValueFactory(new PropertyValueFactory<Waiting_Process_Obj, String>("burstSize"));
-		processCol.setCellValueFactory(new PropertyValueFactory<Waiting_Process_Obj, String>("processId"));
-		sizeCol.setCellValueFactory(new PropertyValueFactory<Waiting_Process_Obj, String>("processSize"));
+		burstCol.setCellValueFactory(new PropertyValueFactory<Process_Object, String>("burstSize"));
+		processCol.setCellValueFactory(new PropertyValueFactory<Process_Object, String>("processId"));
+		sizeCol.setCellValueFactory(new PropertyValueFactory<Process_Object, String>("processSize"));
 	}
 
 	public void setTimeElapsedTxt(int timeElapsed) {

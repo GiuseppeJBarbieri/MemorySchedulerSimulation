@@ -1,10 +1,22 @@
 package model;
-
-public class Waiting_Process_Obj {
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class creates a process object which stores..
+ * 				1. The Process Id
+ * 				2. The Process Size
+ * 				3. The Process Burst Size
+ * 
+ */
+public class Process_Object {
 
 	private String processId, processSize, burstSize;
 
-	public Waiting_Process_Obj(String processId, String processSize, String burstSize) {
+	public Process_Object(String processId, String processSize, String burstSize) {
 		super();
 		this.processId = processId;
 		this.processSize = processSize;
@@ -34,6 +46,5 @@ public class Waiting_Process_Obj {
 	public void setBurstSize(String burstSize) {
 		this.burstSize = burstSize;
 	}
-	
 	
 }

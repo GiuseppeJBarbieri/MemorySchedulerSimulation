@@ -1,13 +1,4 @@
-/*
- * 
- * Created By Giuseppe Barbieri
- * Cpu Scheduler App
- * Com 310-S01
- * 11/04/2018
- * 
- */
-
-package main_view;
+package main_view.main;
 
 import java.io.IOException;
 
@@ -15,6 +6,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class loads the Main View which shows the main view of the application.
+ * 
+ */
 
 public class Display_Main_View {
 
