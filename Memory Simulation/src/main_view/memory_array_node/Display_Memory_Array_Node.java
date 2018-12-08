@@ -24,20 +24,17 @@ import model.Segment_Object;
 public class Display_Memory_Array_Node {
 	private Memory_Array_Node_Controller controller;
 
-	public Display_Memory_Array_Node(VBox memArrBox) {
+	public Display_Memory_Array_Node(VBox memArrBox, Main_View_Director directorMap) {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_view/memory_array_node/Memory_Array_Skin.fxml"));
 			HBox root = loader.load();
 			controller = loader.getController();
+			controller.setDirectorMap(directorMap, this);
 			memArrBox.getChildren().add(root);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-	}
-
-	public void setMemBlockSizeTxtFields(ArrayList<Segment_Object> segmentList) {
-		controller.setMemBlockTxtFields(segmentList);
 	}
 
 	public void setFreeSpaceInformation(String text) {

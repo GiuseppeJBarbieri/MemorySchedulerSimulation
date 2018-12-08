@@ -2,6 +2,8 @@ package main_view.director;
 
 import java.util.ArrayList;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import model.Process_Object;
 
 public class Waiting_Queue {
@@ -26,15 +28,15 @@ public class Waiting_Queue {
 		waitingQueue.add(process);
 	}
 	
-	public void updateFFAThreadWaitingQueue() {
-		
-	}
-	
 	public int getSize() {
 		return waitingQueue.size();
 	}
 	public void clearWaitingQueue() {
 		waitingQueue.clear();
+	}
+	public void updateWaitingQueueTbl() {
+		ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
+		directorMap.getWqnC().getWaitingQueueTbl().setItems(tableList);
 	}
 	
 	public void updateWaitingQueue(ArrayList<Process_Object> queue) {
@@ -94,7 +96,7 @@ public class Waiting_Queue {
 				}
 			}
 
-			if (directorMap.getSetupAppNodeCont().isYGenerateRBtnSelected()) {
+			if (directorMap.getSanC().isYGenerateRBtnSelected()) {
 				if (p1 == 0) {
 					waitingQueue
 							.add(new Process_Object("P1", (Integer.toString((int) (Math.random() * 100 + 100))),
@@ -160,7 +162,7 @@ public class Waiting_Queue {
 			
 		}
 		
-		directorMap.getWaitingQueueNodeCont().updateWaitingQueueTbl();
+		directorMap.getWaitingQueue().updateWaitingQueueTbl();
 		
 	}
 }

@@ -15,6 +15,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
+import main_view.director.Main_View_Director;
 import main_view.memory_array_node.Display_Memory_Array_Node;
 
 public class Setup_App_Node_Controller implements Initializable {
@@ -28,24 +29,30 @@ public class Setup_App_Node_Controller implements Initializable {
 	@FXML
 	private TextField totalMemoryTxt;
 	
-	private String[] algorithmList = { "First-Fit", "Best-Fit", "Worst-Fit" };
+	private String[] algorithmList = { "First-Fit" };
 	private String[] partitionSizeTypeList = { "Unequal" };
 	private Display_Memory_Array_Node memArrayNode;
+	private Main_View_Director directorMap;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		textFieldListener();
 		setMemorySizeBtn.setOnAction(e -> setTotalMemorySpace());
-		algorithmChoiceBox.getSelectionModel().select(0);
-		partitionSizeTypeChoiceBox.getSelectionModel().select(0);
+		
 		ObservableList<String> algorithmObsList = FXCollections.observableArrayList(algorithmList);
 		algorithmChoiceBox.setItems(algorithmObsList);
+		
 		ObservableList<String> partitionSizeTypeObsList = FXCollections.observableArrayList(partitionSizeTypeList);
 		partitionSizeTypeChoiceBox.setItems(partitionSizeTypeObsList);
-		textFieldListener();
+		
+		algorithmChoiceBox.getSelectionModel().select(0);
+		partitionSizeTypeChoiceBox.getSelectionModel().select(0);
+		
 		ToggleGroup generateGroup = new ToggleGroup();
 		yGenerateRBtn.setToggleGroup(generateGroup);
 		nGenerateRBtn.setToggleGroup(generateGroup);
 		nGenerateRBtn.setSelected(true);
+		
 		ToggleGroup preloadGroup = new ToggleGroup();
 		yPreloadRBtn.setToggleGroup(preloadGroup);
 		nPreloadRBtn.setToggleGroup(preloadGroup);
@@ -76,7 +83,7 @@ public class Setup_App_Node_Controller implements Initializable {
 	}
 	
 	public boolean isYPreloadRBtnSelected() {
-		if(yPreloadRBtn.isSelected()) {
+		if(yPreloadRBtn.isSelected() == true) {
 			return true;
 		} else {
 			return false;
@@ -107,5 +114,10 @@ public class Setup_App_Node_Controller implements Initializable {
 	}
 	public int getAlgorithmChoiceBoxSelectedIndex() {
 		return algorithmChoiceBox.getSelectionModel().getSelectedIndex();
+	}
+	
+	public void setDirectorMap(Main_View_Director directorMap) {
+		this.directorMap = directorMap;
+		directorMap.setSanC(this);
 	}
 }

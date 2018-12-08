@@ -25,7 +25,6 @@ public class Waiting_Queue_Node_Controller implements Initializable {
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		initializeTblCol();
-		updateWaitingQueueTbl();
 	}
 	
 	private void initializeTblCol() {
@@ -37,10 +36,10 @@ public class Waiting_Queue_Node_Controller implements Initializable {
 
 	public void setDirectorMap(Main_View_Director directorMap) {
 		this.directorMap = directorMap;
+		directorMap.setWqnC(this);
 	}
 	
-	public void updateWaitingQueueTbl() {
-		ObservableList<Process_Object> tableList = FXCollections.observableArrayList(directorMap.getWaitingQueue().getWaitingQueue());
-		waitingQueueTbl.setItems(tableList);
+	public TableView<Process_Object> getWaitingQueueTbl() {
+		return waitingQueueTbl;
 	}
 }

@@ -3,11 +3,11 @@ package algorithm;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-import controller.FFA_To_MemArrView_Controller;
 import javafx.application.Platform;
+import main_view.director.Main_View_Director;
 import main_view.main.Main_View_Controller;
-import model.Segment_Object;
 import model.Process_Object;
+import model.Segment_Object;
 
 public class First_Fit_Algorithm_Thread implements Runnable {
 
@@ -17,24 +17,21 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private ArrayList<Segment_Object> segmentList;
 	private boolean stopQueue = false;
 	private boolean pauseQueue = false;
-	private Main_View_Controller main_View_Controller;
 	private int timeElapsed;
-	private FFA_To_MemArrView_Controller ffamavCont;
 	private int freeMemBlocks;
 	private int inUseMemBlocks;
+	private Main_View_Director directorMap;
 
-	public First_Fit_Algorithm_Thread(Main_View_Controller main_View_Controller,
-			ArrayList<Process_Object> waitingQueue, String totalMemorySize, Double cpuSpeed,
-			FFA_To_MemArrView_Controller ffamavCont) {
+	public First_Fit_Algorithm_Thread(Main_View_Director directorMap) {
+		this.directorMap = directorMap;
 		timeElapsed = 0;
-		this.main_View_Controller = main_View_Controller;
-		this.waitingQueue = waitingQueue;
-		this.totalMemorySize = totalMemorySize;
-		this.cpuSpeed = cpuSpeed;
-		segmentList = new ArrayList<>();
-		this.ffamavCont = ffamavCont;
 		freeMemBlocks = 0;
 		inUseMemBlocks = 0;
+		segmentList = new ArrayList<>();
+		this.waitingQueue = directorMap.getWaitingQueue().getWaitingQueue();
+		this.totalMemorySize = directorMap.getSanC().getTotalMemoryTxt();
+		this.cpuSpeed = directorMap.getCsptnC().getCpuSpeedChoice();
+		
 	}
 
 	@Override
@@ -67,7 +64,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		for (Segment_Object e : segmentList) {
 			waitingQueue.remove(e.getObj());
 		}
-		main_View_Controller.updateWaitingQueue(waitingQueue);
+		directorMap.getWaitingQueue().setWaitingQueue(waitingQueue);
 		for (Segment_Object e : segmentList) {
 			System.out.println("BLOCK ID: " + e.getSegmentId() + "\tBASE: " + e.getBase() + " LIMIT: " + e.getLimit());
 
@@ -81,18 +78,19 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		// Starting queue
 		inUseMemBlocks = 0;
 		freeMemBlocks = 0;
-		main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
-		main_View_Controller.updateWaitingQueue(waitingQueue);
+		directorMap.getMainC().setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
+		directorMap.getWaitingQueue().setWaitingQueue(waitingQueue);
 		setMemoryArrayInformation();
 		startDisplayingMemoryBlocksInArray();
 		
 		while(!stopQueue) {
-			main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
-			main_View_Controller.updateWaitingQueue(waitingQueue);
+			directorMap.getMainC().setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
+			directorMap.getWaitingQueue().setWaitingQueue(waitingQueue);
 			setMemoryArrayInformation();
 			startDisplayingMemoryBlocksInArray();
 			updateTimeElapsed();
 			updateFreeAndInUseBlockTxt();
+			directorMap.getWaitingQueue().updateWaitingQueueTbl();
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				
@@ -130,7 +128,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				ffamavCont.startDisplayingMemBlocks(segmentList);
+				directorMap.getManC().startDisplayingMemBlocks(segmentList);
 			}
 		});
 
@@ -141,14 +139,14 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				ffamavCont.setMemBlockSizeTxt(segmentList);
+				directorMap.getManC().setMemBlockTxtFields(segmentList);
 			}
 		});
 	}
 
 	private void updateTimeElapsed() {
 		timeElapsed++;
-		main_View_Controller.setTimeElapsedTxt(timeElapsed);
+		directorMap.getMainC().setTimeElapsedTxt(timeElapsed);
 	}
 	
 	private void updateFreeAndInUseBlockTxt() {
@@ -158,7 +156,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 				freeBlocks++;
 			}
 		}
-		main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeBlocks), Integer.toString((segmentList.size() - freeBlocks )));
+		directorMap.getMainC().setfreeAndInUseBlocksTxt(Integer.toString(freeBlocks), Integer.toString((segmentList.size() - freeBlocks )));
 	}
 
 	private void checkIfProcessCanBeAddedToMemory() {
@@ -191,9 +189,5 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	public void stopQueue() {
 		stopQueue = true;
 	}
-
-	public void updateWaitingQueue(Process_Object process) {
-		waitingQueue.add(process);
-	}
-
+	
 }

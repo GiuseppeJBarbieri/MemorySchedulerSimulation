@@ -29,6 +29,7 @@ public class CPU_Speed_Partition_Type_Node_Controller implements Initializable {
 
 	public void setDirectorMap(Main_View_Director directorMap) {
 		this.directorMap = directorMap;
+		directorMap.setCsptnC(this);
 	}
 
 	public double getCpuSpeedChoice() {

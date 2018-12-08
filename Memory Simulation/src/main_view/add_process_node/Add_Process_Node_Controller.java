@@ -30,12 +30,14 @@ public class Add_Process_Node_Controller implements Initializable {
 
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
+		textFieldListener();
+		
+		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
+		
 		ObservableList<String> processObsList = FXCollections.observableArrayList(processList);
 		processIdChoiceBox.setItems(processObsList);
 		processIdChoiceBox.getSelectionModel().select(0);
-		textFieldListener();
-
-		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
+		
 	}
 
 	private void textFieldListener() {
@@ -59,22 +61,18 @@ public class Add_Process_Node_Controller implements Initializable {
 	}
 
 	private void addProcessToWaitingQueue() {
-
 		if (processSizeTxt.getText().equals("") || burstTimeTxt.getText().equals("")) {
 			new Missing_Information_Alert("Missing process information.");
-
 		} else {
 			if (checkIfProccessInWaitingQueue(processIdChoiceBox.getSelectionModel().getSelectedItem()) == true) {
 				new Missing_Information_Alert("Process already in waiting queue!");
 			} else {
-				if (directorMap.getSimControlsNodeCont().getFFAThread() != null) {
-					
-					directorMap.getSimControlsNodeCont().getFFAThread().updateWaitingQueue(
-							new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(), processSizeTxt.getText(), burstTimeTxt.getText()));
-				}
-				directorMap.getWaitingQueueNodeCont().updateWaitingQueueTbl();
+				directorMap.getWaitingQueue().addToQueue(new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(), processSizeTxt.getText(), burstTimeTxt.getText()));
+				System.out.println(processIdChoiceBox.getSelectionModel().getSelectedItem() + processSizeTxt.getText() + " " + burstTimeTxt.getText());
 			}
+			directorMap.getWaitingQueue().updateWaitingQueueTbl();
 		}
+
 	}
 
 	private boolean checkIfProccessInWaitingQueue(String processId) {
@@ -88,5 +86,6 @@ public class Add_Process_Node_Controller implements Initializable {
 
 	public void setDirectorMap(Main_View_Director directorMap) {
 		this.directorMap = directorMap;
+		directorMap.setApnC(this);
 	}
 }

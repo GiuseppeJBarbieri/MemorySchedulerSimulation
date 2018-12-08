@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import main_view.director.Main_View_Director;
 import model.Segment_Object;
 
 public class Memory_Array_Node_Controller implements Initializable {
@@ -65,7 +66,9 @@ public class Memory_Array_Node_Controller implements Initializable {
 	private ArrayList<Label> memBlockLimitLblList;
 	private ArrayList<VBox> memBlockVBoxList;
 	private ArrayList<HBox> processHBoxList;
-
+	private Main_View_Director directorMap;
+	private Display_Memory_Array_Node display_Memory_Array_Node;
+	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		memBlockSizeTxtList = new ArrayList<>();
@@ -924,6 +927,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 		memBlockSizeTxtList.add(memB8SizeTxt);
 		memBlockSizeTxtList.add(memB9SizeTxt);
 		memBlockSizeTxtList.add(memB10SizeTxt);
+	}
+
+	public void setDirectorMap(Main_View_Director directorMap, Display_Memory_Array_Node display_Memory_Array_Node) {
+		this.directorMap = directorMap;
+		directorMap.setManC(this);
+	}
+	public Display_Memory_Array_Node getMemArrNode() {
+		return display_Memory_Array_Node;
 	}
 
 }

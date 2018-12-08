@@ -19,6 +19,7 @@ public class Display_Setup_App_Node {
 			root = loader.load();
 			controller = loader.getController();
 			controller.setMemArrayNode(memArrayNode);
+			controller.setDirectorMap(mainDirector);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
