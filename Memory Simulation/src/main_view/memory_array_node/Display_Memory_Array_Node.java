@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import main_view.director.Main_View_Director;
 import model.Segment_Object;
 
 /*
@@ -25,7 +26,7 @@ public class Display_Memory_Array_Node {
 
 	public Display_Memory_Array_Node(VBox memArrBox) {
 		try {
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("/memory_array_view/Memory_Array_Skin.fxml"));
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_view/memory_array_node/Memory_Array_Skin.fxml"));
 			HBox root = loader.load();
 			controller = loader.getController();
 			memArrBox.getChildren().add(root);
