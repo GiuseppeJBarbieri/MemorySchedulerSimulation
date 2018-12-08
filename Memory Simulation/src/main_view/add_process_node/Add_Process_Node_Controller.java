@@ -13,6 +13,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
+import main_view.director.Main_View_Director;
 import model.Process_Object;
 
 public class Add_Process_Node_Controller implements Initializable {
@@ -23,19 +24,20 @@ public class Add_Process_Node_Controller implements Initializable {
 	@FXML
 	private Button addProcessBtn;
 
+	private Main_View_Director directorMap;
 	private String[] processList = { "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9", "P10", "P11", "P12", "P13",
 			"P14", "P15", };
-	
+
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		ObservableList<String> processObsList = FXCollections.observableArrayList(processList);
 		processIdChoiceBox.setItems(processObsList);
 		processIdChoiceBox.getSelectionModel().select(0);
 		textFieldListener();
-		
-		//addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
+
+		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
 	}
-	
+
 	private void textFieldListener() {
 		processSizeTxt.textProperty().addListener(new ChangeListener<String>() {
 			@Override
@@ -45,7 +47,7 @@ public class Add_Process_Node_Controller implements Initializable {
 				}
 			}
 		});
-		
+
 		burstTimeTxt.textProperty().addListener(new ChangeListener<String>() {
 			@Override
 			public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -55,7 +57,7 @@ public class Add_Process_Node_Controller implements Initializable {
 			}
 		});
 	}
-/*
+
 	private void addProcessToWaitingQueue() {
 
 		if (processSizeTxt.getText().equals("") || burstTimeTxt.getText().equals("")) {
@@ -65,24 +67,26 @@ public class Add_Process_Node_Controller implements Initializable {
 			if (checkIfProccessInWaitingQueue(processIdChoiceBox.getSelectionModel().getSelectedItem()) == true) {
 				new Missing_Information_Alert("Process already in waiting queue!");
 			} else {
-				if (ffat != null) {
-					ffat.updateWaitingQueue(
-							new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(),
-									processSizeTxt.getText(), burstTimeTxt.getText()));
+				if (directorMap.getSimControlsNodeCont().getFFAThread() != null) {
+					
+					directorMap.getSimControlsNodeCont().getFFAThread().updateWaitingQueue(
+							new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(), processSizeTxt.getText(), burstTimeTxt.getText()));
 				}
-				ObservableList<Process_Object> tableList = FXCollections.observableArrayList(waitingQueue);
-				waitingQueueTbl.setItems(tableList);
+				directorMap.getWaitingQueueNodeCont().updateWaitingQueueTbl();
 			}
 		}
 	}
-	
+
 	private boolean checkIfProccessInWaitingQueue(String processId) {
-		for (Process_Object e : waitingQueue) {
+		for (Process_Object e : directorMap.getWaitingQueue().getWaitingQueue()) {
 			if (e.getProcessId().equals(processId)) {
 				return true;
 			}
 		}
 		return false;
 	}
-	*/
+
+	public void setDirectorMap(Main_View_Director directorMap) {
+		this.directorMap = directorMap;
+	}
 }

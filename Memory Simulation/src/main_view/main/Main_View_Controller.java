@@ -38,14 +38,13 @@ public class Main_View_Controller implements Initializable {
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		mainDirector = new Main_View_Director();
-		
+		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 		addProccessNode = new Display_Add_Process_Node(mainDirector);
 		displayCPUSpeedNode = new Display_CPU_Speed_Partition_Type_Node(mainDirector);
 		displayMemArrInfoNode = new Display_Memory_Array_Info_Node(mainDirector);
 		displaySetupAppNode = new Display_Setup_App_Node(mainDirector, memArrayNode);
-		displaySimControlsNode = new Display_Simulation_Controls_Node(mainDirector);
+		displaySimControlsNode = new Display_Simulation_Controls_Node(mainDirector, memoryBox, memArrayNode);
 		displayWaitingQueueNode = new Display_Waiting_Queue_Node(mainDirector);
-		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 		
 		footerHBox.getChildren().addAll(displayWaitingQueueNode.getNode(), displaySimControlsNode.getNode(), displayMemArrInfoNode.getNode());
 		processCpuSpeedHBox.getChildren().addAll(addProccessNode.getNode(),  displayCPUSpeedNode.getNode());

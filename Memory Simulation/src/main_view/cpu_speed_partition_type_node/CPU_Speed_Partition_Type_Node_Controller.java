@@ -31,5 +31,8 @@ public class CPU_Speed_Partition_Type_Node_Controller implements Initializable {
 		this.directorMap = directorMap;
 	}
 
+	public double getCpuSpeedChoice() {
+		return cpuSpeedChoice.getValue();
+	}
 	
 }

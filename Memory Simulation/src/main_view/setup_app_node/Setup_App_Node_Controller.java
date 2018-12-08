@@ -97,4 +97,15 @@ public class Setup_App_Node_Controller implements Initializable {
 	public void disableSetMemorySizeBtn(boolean x) {
 		setMemorySizeBtn.setDisable(x);
 	}
+	
+	public void setSetMemorySizeBtn(String s) {
+		setMemorySizeBtn.setText(s);
+		setMemorySizeBtn.setDisable(true);
+	}
+	public String getTotalMemoryTxt() {
+		return totalMemoryTxt.getText();
+	}
+	public int getAlgorithmChoiceBoxSelectedIndex() {
+		return algorithmChoiceBox.getSelectionModel().getSelectedIndex();
+	}
 }
