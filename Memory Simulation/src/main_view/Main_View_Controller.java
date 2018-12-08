@@ -75,20 +75,34 @@ public class Main_View_Controller implements Initializable {
 		setMemorySizeBtn.setOnAction(e -> setTotalMemorySpace());
 		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 
-		for (int i = 0; i < 15; i++) {
-			processIdChoiceBox.getSelectionModel().select(i);
-			String process = processIdChoiceBox.getSelectionModel().getSelectedItem();
-			int size = (int) (Math.random() * 100);
-			int burst = (int) (Math.random() * 100);
-			waitingQueue.add(new Waiting_Process_Obj(process, Integer.toString(size), Integer.toString(burst)));
-		}
+		presetInformation();
 
 		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
-		totalMemoryTxt.setText("600");
+		totalMemoryTxt.setText("2048");
+		setTotalMemorySpace();
 
 	}
 	
+	private void presetInformation() {
+		waitingQueue.add(new Waiting_Process_Obj("P1", Integer.toString(130), Integer.toString(5)));
+		waitingQueue.add(new Waiting_Process_Obj("P2", Integer.toString(230), Integer.toString(68)));
+		waitingQueue.add(new Waiting_Process_Obj("P3", Integer.toString(330), Integer.toString(12)));
+		waitingQueue.add(new Waiting_Process_Obj("P4", Integer.toString(420), Integer.toString(28)));
+		waitingQueue.add(new Waiting_Process_Obj("P5", Integer.toString(140), Integer.toString(94)));
+		waitingQueue.add(new Waiting_Process_Obj("P6", Integer.toString(200), Integer.toString(12)));
+		waitingQueue.add(new Waiting_Process_Obj("P7", Integer.toString(500), Integer.toString(83)));
+		waitingQueue.add(new Waiting_Process_Obj("P8", Integer.toString(540), Integer.toString(86)));
+		waitingQueue.add(new Waiting_Process_Obj("P9", Integer.toString(220), Integer.toString(41)));
+		waitingQueue.add(new Waiting_Process_Obj("P10", Integer.toString(490), Integer.toString(48)));
+		waitingQueue.add(new Waiting_Process_Obj("P11", Integer.toString(280), Integer.toString(4)));
+		waitingQueue.add(new Waiting_Process_Obj("P12", Integer.toString(160), Integer.toString(82)));
+		waitingQueue.add(new Waiting_Process_Obj("P13", Integer.toString(300), Integer.toString(41)));
+		waitingQueue.add(new Waiting_Process_Obj("P14", Integer.toString(540), Integer.toString(30)));
+		waitingQueue.add(new Waiting_Process_Obj("P15", Integer.toString(130), Integer.toString(32)));
+		
+	}
+
 	public void setTotalMemorySpace() {
 		if(Integer.parseInt(totalMemoryTxt.getText()) < 1024) {
 			new Missing_Information_Alert("Memory total can't be less than 1024KB (1MB) and max 4096KB (4MB).");

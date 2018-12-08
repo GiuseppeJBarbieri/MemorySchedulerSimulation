@@ -49,92 +49,119 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		int limit = 200;
 		int id = 1;
 		for (Waiting_Process_Obj e : waitingQueue) {
-			if (segmentList.size() < 9) {
+			if (Integer.parseInt(e.getProcessSize()) < ((Integer.parseInt(totalMemorySize) - limit))) {
 				limit += Integer.parseInt(e.getProcessSize());
 				if (limit > Integer.parseInt(totalMemorySize)) {
 					segmentList.add(new Segment_Object(id++, base, (Integer.parseInt(totalMemorySize) - 1), null));
 				} else {
-					segmentList.add(new Segment_Object(id++, base, limit, e));
+					segmentList.add(new Segment_Object(id++, base, (limit - 1), e));
 					base += Integer.parseInt(e.getProcessSize());
-				}
-			} else {
-				limit = Integer.parseInt(totalMemorySize) + limit;
-				if(limit > Integer.parseInt(e.getProcessSize())) {
-					segmentList.add(new Segment_Object(id++, base, limit, e));
-					break;
 				}
 			}
 		}
-
+		if (limit < Integer.parseInt(totalMemorySize)) {
+			// this creates the free space at the end of the memory array
+			Waiting_Process_Obj obj = new Waiting_Process_Obj("0", Integer.toString((Integer.parseInt(totalMemorySize) - limit)), "0");
+			segmentList.add(new Segment_Object(0, limit, Integer.parseInt(totalMemorySize), obj));
+		}
 		for (Segment_Object e : segmentList) {
 			waitingQueue.remove(e.getObj());
 		}
-
 		main_View_Controller.updateWaitingQueue(waitingQueue);
-		//Starting queue loop--------------------------------------------------------------------------------------------------
+		for (Segment_Object e : segmentList) {
+			System.out.println("BLOCK ID: " + e.getSegmentId() + "\tBASE: " + e.getBase() + " LIMIT: " + e.getLimit());
+
+			if (e.getObj() != null) {
+				System.out.println("\t\tPROCESS ID: " + e.getObj().getProcessId() + " SIZE: "
+						+ e.getObj().getProcessSize() + " Burst Time: " + e.getObj().getBurstSize());
+			}
+			System.out.println();
+		}
+		System.out.println("-------------------------------------------");
+		// Starting queue
+		inUseMemBlocks = 0;
+		freeMemBlocks = 0;
+		main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
+		main_View_Controller.updateWaitingQueue(waitingQueue);
+		setMemoryArrayInformation();
+		startDisplayingMemoryBlocksInArray();
+		
+		/*
 		while (!stopQueue) {
-			main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks), Integer.toString(inUseMemBlocks));
+			
+			main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
+			main_View_Controller.updateWaitingQueue(waitingQueue);
 			setMemoryArrayInformation();
 			startDisplayingMemoryBlocksInArray();
-			while (pauseQueue) {
-				try {
-					TimeUnit.SECONDS.sleep(1);
-				} catch (InterruptedException e1) {
-					e1.printStackTrace();
-				}
-			}
 			updateTimeElapsed();
-
-			main_View_Controller.updateWaitingQueue(waitingQueue);
+			
+			while (pauseQueue) { }
+			
+			try {
+				TimeUnit.SECONDS.sleep(1);
+				
+				
+				
+				
+			} catch (InterruptedException e2) {
+				e2.printStackTrace();
+			}
+			
+			/*
+			
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				for (Segment_Object e : segmentList) {
 					if (e.getObj() != null) {
 						if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
 							e.getObj().setBurstSize("0");
-							// This is where i add a new process in and update the partitions -- gto
-							removeProcessFromMemory(e.getObj());
-							checkIfProcessCanBeAddedToMemory();
-						} else {
-							e.getObj().setBurstSize(
-									Integer.toString((int) (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed)));
+						}
+						removeProcessFromMemory(e.getObj());
+						checkIfProcessCanBeAddedToMemory();
+					} else {
+						if (e.getObj() != null) {
+							e.getObj().setBurstSize(Integer.toString((int) (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed)));
 						}
 					}
 				}
 
+				inUseMemBlocks = 0;
+				freeMemBlocks = 0;
+				for (Segment_Object e : segmentList) {
+					waitingQueue.remove(e.getObj());
+					if (e.getObj() != null) {
+						inUseMemBlocks++;
+					} else {
+						freeMemBlocks++;
+					}
+				}
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
-			}
-
-			inUseMemBlocks = 0;
-			freeMemBlocks = 0;
-			for (Segment_Object e : segmentList) {
-				waitingQueue.remove(e.getObj());
-				
-				if (e.getObj() != null) {
-					inUseMemBlocks++;
-				} else {
-					freeMemBlocks++;
-				}
-			}
-
+			} 
 		}
-
+		*/
 	}
-	
+
 	private void startDisplayingMemoryBlocksInArray() {
-		ffamavCont.startDisplayingMemBlocks(segmentList);
-	}
-
-	private void setMemoryArrayInformation() {
-		//also sets free blocks and blocks in use txtfields
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
-				ffamavCont.setMemBlockSizeTxt(segmentList);				
+				ffamavCont.startDisplayingMemBlocks(segmentList);
+			}
+		});
+
+	}
+
+	private void setMemoryArrayInformation() {
+		// also sets free blocks and blocks in use txtfields
+		Platform.runLater(new Runnable() {
+			@Override
+			public void run() {
+				ffamavCont.setMemBlockSizeTxt(segmentList);
 			}
 		});
 	}
+
 	private void updateTimeElapsed() {
 		timeElapsed++;
 		main_View_Controller.setTimeElapsedTxt(timeElapsed);

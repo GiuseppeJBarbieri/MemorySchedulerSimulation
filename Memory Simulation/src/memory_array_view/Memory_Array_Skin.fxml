@@ -14,7 +14,7 @@
    <children>
       <VBox fx:id="memoryArrayVBox" prefHeight="1043.0" prefWidth="242.0" style="-fx-background-color: #416399; -fx-border-color: #000000; -fx-border-width: 5;">
          <children>
-            <VBox prefHeight="40.0" prefWidth="232.0" style="-fx-background-color: #0ffffb; -fx-border-color: #000000;">
+            <VBox fx:id="osMemBlockVBox" prefHeight="40.0" prefWidth="232.0" style="-fx-background-color: #0ffffb; -fx-border-color: #000000;">
                <children>
                   <AnchorPane prefHeight="0.0" prefWidth="240.0">
                      <children>

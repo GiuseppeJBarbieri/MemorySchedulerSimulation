@@ -17,8 +17,8 @@ public class Memory_Array_Node_Controller implements Initializable {
 	@FXML
 	private HBox memoryArrayContainerHBox;
 	@FXML
-	private VBox memoryArrayVBox, memBlock1VBox, memBlock2VBox, memBlock3VBox, memBlock4VBox, memBlock5VBox,
-			memBlock6VBox, memBlock7VBox, memBlock8VBox, memBlock9VBox, memBlock10VBox;
+	private VBox freeSpaceVBox, osMemBlockVBox, memoryArrayVBox, memBlock1VBox, memBlock2VBox, memBlock3VBox, memBlock4VBox,
+			memBlock5VBox, memBlock6VBox, memBlock7VBox, memBlock8VBox, memBlock9VBox, memBlock10VBox;
 	@FXML
 	private HBox process1HBox, process2HBox, process3HBox, process4HBox, process5HBox, process6HBox, process7HBox,
 			process8HBox, process9HBox, process10HBox, process11HBox, process12HBox, process13HBox, process14HBox,
@@ -77,22 +77,68 @@ public class Memory_Array_Node_Controller implements Initializable {
 	}
 
 	public void startDisplayingMemBlocks(ArrayList<Segment_Object> segmentList) {
-		//use base and limit to figure out where the segments go
-		ArrayList<Segment_Object> segmentListCopy = segmentList;
-		ArrayList<Segment_Object> memoryBlockOrderedList = new ArrayList<>();
-		for(int i = 0; i < segmentList.size(); i++) {
-			int lowestBase = 4097; //1 + max memory size
-			int lowestBaseIndex = 0;
-			for(int j = 0; j < segmentListCopy.size(); j++) {
-				if(segmentListCopy.get(j).getBase() < lowestBase) {
-					lowestBase = segmentListCopy.get(j).getBase();
-					lowestBaseIndex = j;
-				}
-			}
-			memoryBlockOrderedList.add(segmentListCopy.get(lowestBaseIndex));
-			segmentListCopy.remove(lowestBaseIndex);
+		ArrayList<Segment_Object> segmentListCopy = new ArrayList<>();
+		ArrayList<Segment_Object> orderedIndexMBList = new ArrayList<>();
+		Integer lowestBaseIndex = 0;
+		memoryArrayVBox.getChildren().clear();
+		memoryArrayVBox.getChildren().add(osMemBlockVBox);
+
+		for (Segment_Object e : segmentList) {
+			segmentListCopy.add(e);
 		}
-		
+		int lowestBase = 4097; // 1 + max memory size
+		for (int i = 0; i < segmentList.size(); i++) {
+			lowestBase = 4097; // 1 + max memory size
+			if (segmentListCopy.size() != 0) {
+				for (int j = 0; j < segmentListCopy.size(); j++) {
+					if (segmentListCopy.get(j).getBase() < lowestBase) {
+						lowestBase = segmentListCopy.get(j).getBase();
+						lowestBaseIndex = j;
+					}
+				}
+				orderedIndexMBList.add(segmentListCopy.get(lowestBaseIndex));
+				segmentListCopy.remove(segmentListCopy.get(lowestBaseIndex));
+			}
+		}
+		for (Segment_Object e : orderedIndexMBList) {
+			System.out.println("MemBlockID: " + e.getSegmentId());
+			if (e.getObj() != null) {
+				System.out.println("\tContains Process" + e.getObj().getProcessId());
+			}
+
+		}
+		System.out.println("---------------------------------------");
+		// now that we have an organized list we must display it to the array node
+
+		for (int i = 0; i < orderedIndexMBList.size(); i++) {
+			if (orderedIndexMBList.get(i).getSegmentId() == 1) { // memBlock1VBox the memory block memoryArrayVBox is the container for the mem blocks
+				memoryArrayVBox.getChildren().add(memBlock1VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 2) {
+				memoryArrayVBox.getChildren().add(memBlock2VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 3) {
+				memoryArrayVBox.getChildren().add(memBlock3VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 4) {
+				memoryArrayVBox.getChildren().add(memBlock4VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 5) {
+				memoryArrayVBox.getChildren().add(memBlock5VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 6) {
+				memoryArrayVBox.getChildren().add(memBlock6VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 7) {
+				memoryArrayVBox.getChildren().add(memBlock7VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 8) {
+				memoryArrayVBox.getChildren().add(memBlock8VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 9) {
+				memoryArrayVBox.getChildren().add(memBlock9VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 10) {
+				memoryArrayVBox.getChildren().add(memBlock10VBox);
+			} else if (orderedIndexMBList.get(i).getSegmentId() == 0) {
+				memoryArrayVBox.getChildren().add(freeSpaceVBox);
+				freeSpaceBaseLbl.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+				freeSpaceSize.setText(orderedIndexMBList.get(i).getObj().getProcessSize());
+				freeSpaceLimitLbl.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+			}
+		}
+
 	}
 
 	public void setFreeSpaceInformation(String memorySize) {
@@ -104,7 +150,7 @@ public class Memory_Array_Node_Controller implements Initializable {
 	}
 
 	public void setMemBlockTxtFields(ArrayList<Segment_Object> segmentList) {
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < segmentList.size(); i++) {
 			resetProcesses(segmentList);
 			setProcessBoxToSegmentBox(segmentList);
 			memBlockSizeTxtList.get(i)
