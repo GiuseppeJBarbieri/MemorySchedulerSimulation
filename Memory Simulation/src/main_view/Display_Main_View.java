@@ -22,7 +22,6 @@ public class Display_Main_View {
 		try {
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("/main_view/Main_View_Skin.fxml"));
 			AnchorPane  root = loader.load();
-			@SuppressWarnings("unused")
 			Main_View_Controller controller = loader.getController();
 			Scene scene = new Scene(root, 1318, 888);
 			scene.getStylesheets().add(getClass().getResource("/app/application.css").toExternalForm());

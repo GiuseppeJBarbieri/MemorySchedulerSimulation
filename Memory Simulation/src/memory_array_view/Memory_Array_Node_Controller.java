@@ -17,7 +17,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 	@FXML
 	private HBox memoryArrayContainerHBox;
 	@FXML
-	private VBox freeSpaceVBox, osMemBlockVBox, memoryArrayVBox, memBlock1VBox, memBlock2VBox, memBlock3VBox, memBlock4VBox,
+	private VBox freeSpaceVBox, freeSpaceVBox1, freeSpaceVBox2, freeSpaceVBox3, freeSpaceVBox4, freeSpaceVBox5, freeSpaceVBox6, freeSpaceVBox7, freeSpaceVBox8, freeSpaceVBox9, freeSpaceVBox10;
+	@FXML
+	private Label freeSpaceBaseLbl1, freeSpaceLimitLbl1, freeSpaceSize1, freeSpaceBaseLbl2, freeSpaceLimitLbl2, freeSpaceSize2, freeSpaceBaseLbl3, freeSpaceLimitLbl3, freeSpaceSize3, 
+	freeSpaceBaseLbl4, freeSpaceLimitLbl4, freeSpaceSize4, freeSpaceBaseLbl5, freeSpaceLimitLbl5, freeSpaceSize5, freeSpaceBaseLbl6, freeSpaceLimitLbl6, freeSpaceSize6, freeSpaceBaseLbl7, freeSpaceLimitLbl7, freeSpaceSize7, 
+	freeSpaceBaseLbl8, freeSpaceLimitLbl8, freeSpaceSize8, freeSpaceBaseLbl9, freeSpaceLimitLbl9, freeSpaceSize9, freeSpaceBaseLbl10, freeSpaceLimitLbl10, freeSpaceSize10;
+	
+	@FXML
+	private VBox osMemBlockVBox, memoryArrayVBox, memBlock1VBox, memBlock2VBox, memBlock3VBox, memBlock4VBox,
 			memBlock5VBox, memBlock6VBox, memBlock7VBox, memBlock8VBox, memBlock9VBox, memBlock10VBox;
 	@FXML
 	private HBox process1HBox, process2HBox, process3HBox, process4HBox, process5HBox, process6HBox, process7HBox,
@@ -82,7 +89,8 @@ public class Memory_Array_Node_Controller implements Initializable {
 		Integer lowestBaseIndex = 0;
 		memoryArrayVBox.getChildren().clear();
 		memoryArrayVBox.getChildren().add(osMemBlockVBox);
-
+		setFreeSpaceInformation(Integer.toString(segmentList.get((segmentList.size()-1)).getLimit()));
+		
 		for (Segment_Object e : segmentList) {
 			segmentListCopy.add(e);
 		}
@@ -138,9 +146,159 @@ public class Memory_Array_Node_Controller implements Initializable {
 				freeSpaceLimitLbl.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
 			}
 		}
-
+		
+		checkIfProcessCanBeRemoved(orderedIndexMBList);
+		
 	}
 
+	private void checkIfProcessCanBeRemoved(ArrayList<Segment_Object> orderedIndexMBList) {
+		for(int i = 0; i < orderedIndexMBList.size(); i++) {
+			if(Integer.parseInt(orderedIndexMBList.get(i).getObj().getBurstSize()) == 0) {
+				if (orderedIndexMBList.get(i).getSegmentId() == 1) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock1VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox1);
+					freeSpaceBaseLbl1.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl1.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize1.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock1VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 2) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock2VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox2);
+					freeSpaceBaseLbl2.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl2.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize2.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock2VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 3) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock3VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox3);
+					freeSpaceBaseLbl3.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl3.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize3.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock3VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 4) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock4VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox4);
+					freeSpaceBaseLbl4.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl4.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize4.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock4VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 5) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock5VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox5);
+					freeSpaceBaseLbl5.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl5.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize5.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock5VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 6) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock6VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox6);
+					freeSpaceBaseLbl6.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl6.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize6.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock6VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 7) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock7VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox7);
+					freeSpaceBaseLbl7.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl7.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize7.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock7VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 8) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock8VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox8);
+					freeSpaceBaseLbl8.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl8.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize8.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock8VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 9) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock9VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox9);
+					freeSpaceBaseLbl9.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl9.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize9.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock9VBox);
+					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 10) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock10VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox10);
+					freeSpaceBaseLbl10.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl10.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize10.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					memoryArrayVBox.getChildren().remove(memBlock10VBox);
+					
+				} 
+			}
+		}
+		
+	}
 	public void setFreeSpaceInformation(String memorySize) {
 		// sets the base and the size of the free space
 		if (memorySize != null) {

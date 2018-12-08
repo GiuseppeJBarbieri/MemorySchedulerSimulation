@@ -86,45 +86,30 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		setMemoryArrayInformation();
 		startDisplayingMemoryBlocksInArray();
 		
-		/*
-		while (!stopQueue) {
-			
+		while(!stopQueue) {
 			main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),Integer.toString(inUseMemBlocks));
 			main_View_Controller.updateWaitingQueue(waitingQueue);
 			setMemoryArrayInformation();
 			startDisplayingMemoryBlocksInArray();
 			updateTimeElapsed();
 			
-			while (pauseQueue) { }
-			
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				
+				while (pauseQueue) {
+					TimeUnit.SECONDS.sleep(1);
+				}
 				
-				
-				
-			} catch (InterruptedException e2) {
-				e2.printStackTrace();
-			}
-			
-			/*
-			
-			try {
-				TimeUnit.SECONDS.sleep(1);
 				for (Segment_Object e : segmentList) {
-					if (e.getObj() != null) {
-						if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
-							e.getObj().setBurstSize("0");
-						}
+					if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
+						e.getObj().setBurstSize("0");
 						removeProcessFromMemory(e.getObj());
 						checkIfProcessCanBeAddedToMemory();
 					} else {
-						if (e.getObj() != null) {
-							e.getObj().setBurstSize(Integer.toString((int) (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed)));
-						}
+						e.getObj().setBurstSize(Integer.toString((int) (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed)));
 					}
+					
 				}
-
 				inUseMemBlocks = 0;
 				freeMemBlocks = 0;
 				for (Segment_Object e : segmentList) {
@@ -137,9 +122,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 				}
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
-			} 
+			}
 		}
-		*/
 	}
 
 	private void startDisplayingMemoryBlocksInArray() {
@@ -170,7 +154,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private void checkIfProcessCanBeAddedToMemory() {
 		for (Waiting_Process_Obj e : waitingQueue) {
 			for (Segment_Object f : segmentList) {
-				if ((f.getLimit() - f.getBase()) >= Integer.parseInt(e.getProcessSize()) && f.getObj() == null) {
+				if (f.getObj().getProcessId().equals("0")) {
 					f.setObj(e);
 					break;
 				}
@@ -182,7 +166,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		for (Segment_Object e : segmentList) {
 			if (e.getObj() != null) {
 				if (e.getObj().equals(obj)) {
-					e.setObj(null);
+					Waiting_Process_Obj obj2 = new Waiting_Process_Obj("0", Integer.toString((e.getBase() + e.getLimit() + 1)), "0");
+					e.setObj(obj2);
 				}
 			}
 		}

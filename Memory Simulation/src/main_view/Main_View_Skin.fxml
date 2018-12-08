@@ -190,7 +190,7 @@
                   <Font name="Verdana" size="13.0" />
                </font>
             </Button>
-            <Button fx:id="stopBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Stop Simulation">
+            <Button fx:id="stopBtn" disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Stop Simulation">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font>

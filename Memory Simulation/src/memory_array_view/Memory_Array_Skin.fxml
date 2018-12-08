@@ -70,7 +70,7 @@
                               <Font name="Verdana" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="memB1BaseLbl1111" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                        <Label fx:id="memB1BaseLbl111111" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font>
@@ -99,7 +99,7 @@
                               <Font name="Verdana" size="12.0" />
                            </font>
                         </Label>
-                        <Label fx:id="memB1BaseLbl110101" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                        <Label fx:id="memB1BaseLbl11010111" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
                            <font>
                               <Font name="Verdana" size="12.0" />
                            </font>
@@ -1178,6 +1178,483 @@
                                              </font>
                                           </Label>
                                           <Label fx:id="memB1BaseLbl1109" layoutX="54.0" layoutY="-3.0" text="- Limit of Memory Block 10" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                           </children>
+                           <padding>
+                              <Insets top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <VBox fx:id="freeSpaceVBox1" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl1" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11111" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize1" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl1" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101011" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox2" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl2" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11112" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize2" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl2" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101012" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox3" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl3" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11113" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize3" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl3" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101013" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox4" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl4" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11114" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize4" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl4" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101014" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox5" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl5" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11115" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize5" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl5" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101015" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox6" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl6" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11116" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize6" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl6" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101016" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox7" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl7" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11117" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize7" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl7" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101017" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox8" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl8" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11118" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize8" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl8" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101018" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox9" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl9" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl11119" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize9" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl9" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1101019" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </VBox>
+                              <VBox fx:id="freeSpaceVBox10" prefHeight="1457.0" prefWidth="218.0" style="-fx-background-color: #2679ff; -fx-border-color: #000000;">
+                                 <children>
+                                    <AnchorPane prefHeight="0.0" prefWidth="240.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceBaseLbl10" layoutX="14.0" layoutY="6.0" text="200" AnchorPane.leftAnchor="5.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl1111" layoutX="35.0" text="- Base of Free Space" AnchorPane.leftAnchor="35.0" AnchorPane.topAnchor="0.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </AnchorPane>
+                                    <HBox alignment="CENTER" prefHeight="1430.0" prefWidth="216.0" spacing="5.0">
+                                       <children>
+                                          <Label text="FreeSpace:" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="freeSpaceSize10" text="0" underline="true">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label text="Kb" underline="true" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="117.0" prefWidth="216.0">
+                                       <children>
+                                          <Label fx:id="freeSpaceLimitLbl10" layoutX="14.0" layoutY="6.0" text="0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="5.0">
+                                             <font>
+                                                <Font name="Verdana" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="memB1BaseLbl110101" layoutX="33.0" layoutY="2.0" text="- Limit of Free Space" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="35.0">
                                              <font>
                                                 <Font name="Verdana" size="12.0" />
                                              </font>

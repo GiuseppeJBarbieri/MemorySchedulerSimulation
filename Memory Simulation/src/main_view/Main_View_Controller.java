@@ -1,5 +1,6 @@
 package main_view;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -22,8 +23,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.VBox;
 import memory_array_view.Display_Memory_Array_Node;
-import model.Segment_Object;
 import model.Waiting_Process_Obj;
+import util.Restart_Program;
 
 public class Main_View_Controller implements Initializable {
 
@@ -52,9 +53,11 @@ public class Main_View_Controller implements Initializable {
 	private First_Fit_Algorithm_Thread ffat;
 	private Thread t;
 	private Display_Memory_Array_Node memArrayNode;
+	private String[] args;
 
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
+		args = new String[3];
 		waitingQueue = new ArrayList<>();
 		initializeTblCol();
 		initializeChoiceBox();
@@ -72,6 +75,7 @@ public class Main_View_Controller implements Initializable {
 		addProcessBtn.setOnAction(e -> addProcessToWaitingQueue());
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
+		restartBtn.setOnAction(e -> restartSimulation());
 		setMemorySizeBtn.setOnAction(e -> setTotalMemorySpace());
 		memArrayNode = new Display_Memory_Array_Node(memoryBox);
 
@@ -80,8 +84,21 @@ public class Main_View_Controller implements Initializable {
 		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
 		waitingQueueTbl.setItems(tableList);
 		totalMemoryTxt.setText("2048");
-		setTotalMemorySpace();
 
+	}
+	
+	private void restartSimulation() {
+		setMemorySizeBtn.setDisable(false);
+		memoryBox.getChildren().clear();
+		ffat.stopQueue();
+		startBtn.setDisable(false);
+		stopBtn.setDisable(true);
+		memArrayNode = new Display_Memory_Array_Node(memoryBox);
+		waitingQueue.clear();
+		presetInformation();
+		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
+		waitingQueueTbl.setItems(tableList);
+		
 	}
 	
 	private void presetInformation() {
@@ -175,7 +192,7 @@ public class Main_View_Controller implements Initializable {
 					p15 = 1;
 				}
 			}
-			
+			/*
 			if (p1 == 0) {
 				waitingQueue.add(new Waiting_Process_Obj("P1", (Integer.toString((int) (Math.random() * 100 + 100))),
 						(Integer.toString((int) (Math.random() * 100 + 10)))));
@@ -223,7 +240,7 @@ public class Main_View_Controller implements Initializable {
 						(Integer.toString((int) (Math.random() * 100 + 10)))));
 			}
 			
-			
+			*/
 		}
 
 		ObservableList<Waiting_Process_Obj> tableList = FXCollections.observableArrayList(waitingQueue);
@@ -231,7 +248,6 @@ public class Main_View_Controller implements Initializable {
 	}
 
 	private void stopSimulation() {
-		// ffat.stopQueue();
 		ffat.pauseQueue(cpuSpeedChoice.getValue());
 		if (stopBtn.getText().equals("Stop Simulation")) {
 			stopBtn.setText("Resume Simulation");
@@ -241,6 +257,8 @@ public class Main_View_Controller implements Initializable {
 	}
 
 	private void startSimulation() {
+		setMemorySizeBtn.setDisable(true);
+		setTotalMemorySpace();
 		stopBtn.setDisable(false);
 		if (totalMemoryTxt.equals("")) {
 			new Missing_Information_Alert("Missing memory array size!");
@@ -326,5 +344,10 @@ public class Main_View_Controller implements Initializable {
 
 	public void setTimeElapsedTxt(int timeElapsed) {
 		timeElapsedTxt.setText(Integer.toString(timeElapsed));
+	}
+
+	public void setArgs(String[] args) {
+		this.args= args;
+		
 	}
 }
