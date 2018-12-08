@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Slider?>
 <?import javafx.scene.control.TableColumn?>
@@ -18,20 +19,10 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="888.0" prefWidth="1318.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.Main_View_Controller">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="888.0" prefWidth="1356.0" style="-fx-background-color: #e5fdff;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.Main_View_Controller">
    <children>
       <MenuBar layoutY="2.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <menus>
-            <Menu mnemonicParsing="false" text="File">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Close" />
-               </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Edit">
-               <items>
-                  <MenuItem mnemonicParsing="false" text="Delete" />
-               </items>
-            </Menu>
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />
@@ -39,119 +30,17 @@
             </Menu>
          </menus>
       </MenuBar>
-      <VBox layoutX="76.0" layoutY="50.0" prefHeight="215.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="50.0">
-         <children>
-            <Label text="Select Algorithm">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="algorithmChoiceBox" prefWidth="150.0" />
-            <Label text="Partition Size Type">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="partitionSizeTypeChoiceBox" prefWidth="150.0" />
-            <Label text="Memory Size (kb)">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <TextField fx:id="totalMemoryTxt" alignment="CENTER" />
-            <Button fx:id="setMemorySizeBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Set Memory Size">
-               <font>
-                  <Font name="Verdana" size="12.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <VBox layoutX="251.0" layoutY="190.0" prefHeight="160.0" prefWidth="289.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="251.0" AnchorPane.topAnchor="190.0">
-         <children>
-            <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">
-               <children>
-                  <Label text="Process Id">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <ChoiceBox fx:id="processIdChoiceBox" prefHeight="25.0" prefWidth="84.0" />
-               </children>
-            </HBox>
-            <Line endX="146.2928924560547" endY="-0.20710676908493042" opacity="0.35" startX="-100.0" />
-            <HBox prefHeight="59.0" prefWidth="250.0" spacing="15.0">
-               <children>
-                  <VBox alignment="TOP_CENTER" prefHeight="59.0" prefWidth="156.0" spacing="5.0">
-                     <children>
-                        <Label text="Process Size (kb)">
-                           <font>
-                              <Font name="Verdana" size="13.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="processSizeTxt" alignment="CENTER" />
-                     </children>
-                  </VBox>
-                  <VBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="156.0" spacing="5.0">
-                     <children>
-                        <Label text="Burst Time (s)">
-                           <font>
-                              <Font name="Verdana" size="13.0" />
-                           </font>
-                        </Label>
-                        <TextField fx:id="burstTimeTxt" alignment="CENTER" />
-                     </children>
-                  </VBox>
-               </children>
-            </HBox>
-            <Button fx:id="addProcessBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="255.0" text="Add Process To Wait Queue">
-               <font>
-                  <Font name="Verdana" size="13.0" />
-               </font>
-            </Button>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="155.0" layoutY="274.0" prefHeight="564.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="274.0">
-         <children>
-            <Label text="Waiting Queue" underline="true">
-               <font>
-                  <Font name="Verdana" size="20.0" />
-               </font>
-            </Label>
-            <TableView fx:id="waitingQueueTbl" prefHeight="594.0" prefWidth="168.0">
-               <columns>
-                  <TableColumn fx:id="processCol" prefWidth="75.0" text="Process" />
-                  <TableColumn fx:id="sizeCol" prefWidth="75.0" text="Size (kb)" />
-                  <TableColumn fx:id="burstCol" prefWidth="75.0" text="Burst (s)" />
-               </columns>
-               <columnResizePolicy>
-                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-               </columnResizePolicy>
-            </TableView>
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="785.0" layoutY="50.0" prefHeight="788.0" prefWidth="521.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="12.0" AnchorPane.topAnchor="50.0">
+      <VBox alignment="TOP_CENTER" layoutX="785.0" layoutY="45.0" prefHeight="793.0" prefWidth="521.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="785.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="45.0">
          <children>
             <VBox alignment="TOP_CENTER" prefHeight="30.0" prefWidth="304.0" spacing="15.0">
                <children>
-                  <Label text="Memory Array">
+                  <Label text="Memory Array" underline="true">
                      <font>
-                        <Font name="Verdana" size="15.0" />
+                        <Font name="Verdana" size="30.0" />
                      </font>
                   </Label>
                   <Line endX="412.7218017578125" endY="4.878664016723633" opacity="0.35" startX="-64.2843017578125" startY="4.878664970397949" />
                </children>
-               <padding>
-                  <Insets top="10.0" />
-               </padding>
             </VBox>
             <ScrollPane>
                <content>
@@ -170,150 +59,307 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="251.0" layoutY="361.0" prefHeight="477.0" prefWidth="289.0" spacing="45.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="251.0" AnchorPane.topAnchor="361.0">
+      <HBox layoutX="50.0" layoutY="373.0" prefHeight="465.0" prefWidth="726.0" spacing="10.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="373.0">
          <children>
-            <VBox alignment="TOP_CENTER" prefHeight="55.0" prefWidth="287.0" spacing="20.0">
+            <VBox alignment="TOP_CENTER" prefHeight="465.0" prefWidth="188.0" spacing="5.0" style="-fx-border-color: #c4c4c4;">
                <children>
-                  <Label text="Memory Controls">
+                  <Label text="Waiting Queue" underline="true">
                      <font>
-                        <Font name="Verdana" size="15.0" />
+                        <Font name="Verdana" size="20.0" />
                      </font>
                   </Label>
-                  <Line endX="144.5" opacity="0.35" startX="-100.0" />
+                  <TableView fx:id="waitingQueueTbl" prefHeight="594.0" prefWidth="168.0">
+                     <columns>
+                        <TableColumn fx:id="processCol" prefWidth="75.0" text="Process" />
+                        <TableColumn fx:id="sizeCol" prefWidth="75.0" text="Size (kb)" />
+                        <TableColumn fx:id="burstCol" prefWidth="75.0" text="Burst (s)" />
+                     </columns>
+                     <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                     </columnResizePolicy>
+                  </TableView>
                </children>
                <padding>
-                  <Insets top="30.0" />
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </VBox>
-            <Button fx:id="startBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Start Simulation">
-               <font>
-                  <Font name="Verdana" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="stopBtn" disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Stop Simulation">
-               <font>
-                  <Font name="Verdana" size="13.0" />
-               </font>
-            </Button>
-            <Button fx:id="restartBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Restart Simulation">
-               <font>
-                  <Font name="Verdana" size="13.0" />
-               </font>
-            </Button>
-            <VBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="287.0" spacing="20.0">
+            <VBox alignment="TOP_CENTER" prefHeight="460.0" prefWidth="289.0" spacing="45.0" style="-fx-border-color: #c4c4c4;">
                <children>
-                  <Line endX="144.5" opacity="0.35" startX="-100.0" />
-                  <Button fx:id="compactBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Compact Memory">
+                  <VBox alignment="TOP_CENTER" prefHeight="55.0" prefWidth="287.0" spacing="20.0">
+                     <children>
+                        <Label text="Memory Controls">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </Label>
+                        <Line endX="144.5" opacity="0.35" startX="-100.0" />
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <Button fx:id="startBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Start Simulation">
                      <font>
                         <Font name="Verdana" size="13.0" />
                      </font>
                   </Button>
+                  <Button fx:id="stopBtn" disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Stop Simulation">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="restartBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Restart Simulation">
+                     <font>
+                        <Font name="Verdana" size="13.0" />
+                     </font>
+                  </Button>
+                  <VBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="287.0" spacing="20.0">
+                     <children>
+                        <Line endX="144.5" opacity="0.35" startX="-100.0" />
+                        <Button fx:id="compactBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Compact Memory">
+                           <font>
+                              <Font name="Verdana" size="13.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </VBox>
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="465.0" prefWidth="232.0" spacing="5.0" style="-fx-border-color: #c4c4c4;">
+               <children>
+                  <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="224.0" spacing="20.0">
+                     <children>
+                        <Label text="Memory Array Information">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </Label>
+                        <Line endX="51.5" opacity="0.35" startX="-100.0" />
+                     </children>
+                     <padding>
+                        <Insets top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="224.0" spacing="5.0">
+                     <children>
+                        <Label text="# of Memory Blocks">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField alignment="CENTER" editable="false" maxWidth="130.0" prefHeight="25.0" prefWidth="161.0" text="10" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="16.0" prefWidth="224.0" spacing="5.0">
+                     <children>
+                        <Label text="# of Free Blocks">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="freeBlocksTxt" alignment="CENTER" editable="false" maxWidth="130.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="224.0" spacing="5.0">
+                     <children>
+                        <Label text="# of Blocks in Use">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="memBlocksInUseTxt" alignment="CENTER" editable="false" maxWidth="130.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <VBox alignment="TOP_CENTER" prefHeight="13.0" prefWidth="224.0" spacing="5.0">
+                     <children>
+                        <Label text="Time Elapsed (s)">
+                           <font>
+                              <Font name="Verdana" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="timeElapsedTxt" alignment="CENTER" editable="false" maxWidth="130.0" prefHeight="25.0" prefWidth="107.0" />
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
                </children>
             </VBox>
          </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </VBox>
-      <VBox alignment="CENTER" layoutX="251.0" layoutY="50.0" prefHeight="129.0" prefWidth="521.0" style="-fx-border-color: #000000;" AnchorPane.leftAnchor="251.0" AnchorPane.topAnchor="50.0">
+      </HBox>
+      <HBox layoutX="42.0" layoutY="30.0" prefHeight="320.0" prefWidth="726.0" spacing="10.0" AnchorPane.leftAnchor="50.0" AnchorPane.topAnchor="45.0">
          <children>
-            <Label text="Giuseppe's Memory Manager Simulation" textAlignment="CENTER" underline="true" wrapText="true">
-               <font>
-                  <Font name="Verdana" size="32.0" />
-               </font>
-            </Label>
+            <VBox prefHeight="276.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #c4c4c4;">
+               <children>
+                  <Label text="Select Algorithm">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="algorithmChoiceBox" prefHeight="25.0" prefWidth="226.0" />
+                  <Label text="Partition Size Type">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </Label>
+                  <ChoiceBox fx:id="partitionSizeTypeChoiceBox" prefHeight="25.0" prefWidth="220.0" />
+                  <Label text="Memory Size (kb)">
+                     <font>
+                        <Font name="Verdana" size="14.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="totalMemoryTxt" alignment="CENTER" />
+                  <Button fx:id="setMemorySizeBtn" mnemonicParsing="false" prefHeight="25.0" prefWidth="192.0" text="Set Memory Size">
+                     <font>
+                        <Font name="Verdana" size="12.0" />
+                     </font>
+                  </Button>
+                  <VBox prefHeight="148.0" prefWidth="168.0" spacing="10.0">
+                     <children>
+                        <Line endX="65.0" opacity="0.35" startX="-100.0" />
+                        <VBox prefHeight="40.0" prefWidth="168.0" spacing="5.0">
+                           <children>
+                              <Label text="Preload Waiting Queue?" wrapText="true">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="TOP_CENTER" prefHeight="3.0" prefWidth="168.0" spacing="70.0">
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <children>
+                                    <RadioButton fx:id="yPreloadRBtn" mnemonicParsing="false" text="Yes" />
+                                    <RadioButton fx:id="nPreloadRBtn" mnemonicParsing="false" text="No" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <Line endX="65.0" opacity="0.35" startX="-100.0" />
+                        <VBox prefHeight="53.0" prefWidth="168.0" spacing="5.0">
+                           <children>
+                              <Label text="Generate New Processes?" wrapText="true">
+                                 <font>
+                                    <Font name="Verdana" size="12.0" />
+                                 </font>
+                              </Label>
+                              <HBox alignment="TOP_CENTER" prefHeight="46.0" prefWidth="168.0" spacing="70.0">
+                                 <children>
+                                    <RadioButton fx:id="yGenerateRBtn" mnemonicParsing="false" text="Yes" />
+                                    <RadioButton fx:id="nGenerateRBtn" mnemonicParsing="false" text="No" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets top="5.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </VBox>
+            <VBox prefHeight="320.0" prefWidth="561.0" spacing="10.0">
+               <children>
+                  <VBox alignment="CENTER" prefHeight="132.0" prefWidth="547.0" style="-fx-border-color: #c4c4c4;">
+                     <children>
+                        <Label text="Giuseppe's Memory Manager Simulation" textAlignment="CENTER" wrapText="true">
+                           <font>
+                              <Font name="Cooper Black" size="32.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <padding>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </padding>
+                  </VBox>
+                  <HBox prefHeight="199.0" prefWidth="560.0" spacing="10.0">
+                     <children>
+                        <VBox prefHeight="189.0" prefWidth="289.0" spacing="5.0" style="-fx-border-color: #c4c4c4;">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">
+                                 <children>
+                                    <Label text="Process Id">
+                                       <font>
+                                          <Font name="Verdana" size="15.0" />
+                                       </font>
+                                    </Label>
+                                    <ChoiceBox fx:id="processIdChoiceBox" prefHeight="25.0" prefWidth="84.0" />
+                                 </children>
+                              </HBox>
+                              <Line endX="146.2928924560547" endY="-0.20710676908493042" opacity="0.35" startX="-100.0" />
+                              <HBox prefHeight="59.0" prefWidth="250.0" spacing="15.0">
+                                 <children>
+                                    <VBox alignment="TOP_CENTER" prefHeight="59.0" prefWidth="156.0" spacing="5.0">
+                                       <children>
+                                          <Label text="Process Size (kb)">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="processSizeTxt" alignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="TOP_CENTER" prefHeight="47.0" prefWidth="156.0" spacing="5.0">
+                                       <children>
+                                          <Label text="Burst Time (s)">
+                                             <font>
+                                                <Font name="Verdana" size="13.0" />
+                                             </font>
+                                          </Label>
+                                          <TextField fx:id="burstTimeTxt" alignment="CENTER" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <Button fx:id="addProcessBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="255.0" text="Add Process To Wait Queue">
+                                 <font>
+                                    <Font name="Verdana" size="13.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                        <VBox prefHeight="199.0" prefWidth="231.0" spacing="5.0" style="-fx-border-color: #c4c4c4;">
+                           <children>
+                              <Label text="CPU Speed (x speed)">
+                                 <font>
+                                    <Font name="Verdana" size="15.0" />
+                                 </font>
+                              </Label>
+                              <Slider fx:id="cpuSpeedChoice" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="1.0" minorTickCount="0" prefHeight="48.0" prefWidth="202.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="1.0" />
+                              <Label text="Partitioning Type">
+                                 <font>
+                                    <Font name="Verdana" size="15.0" />
+                                 </font>
+                              </Label>
+                              <ChoiceBox fx:id="partitionTypeChoiceBox" prefHeight="25.0" prefWidth="207.0" />
+                           </children>
+                           <padding>
+                              <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
          </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <VBox layoutX="549.0" layoutY="190.0" prefHeight="160.0" prefWidth="224.0" spacing="5.0" style="-fx-border-color: #000000;">
-         <children>
-            <Label text="CPU Speed (x speed)">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <Slider fx:id="cpuSpeedChoice" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" min="-5.0" minorTickCount="0" prefHeight="48.0" prefWidth="202.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="2.0" />
-            <Label text="Partitioning Type">
-               <font>
-                  <Font name="Verdana" size="15.0" />
-               </font>
-            </Label>
-            <ChoiceBox fx:id="partitionTypeChoiceBox" prefHeight="25.0" prefWidth="207.0" />
-         </children>
-         <padding>
-            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-         </padding>
-      </VBox>
-      <VBox alignment="TOP_CENTER" layoutX="549.0" layoutY="361.0" prefHeight="477.0" prefWidth="226.0" spacing="5.0" style="-fx-border-color: #000000;" AnchorPane.bottomAnchor="50.0" AnchorPane.topAnchor="361.0">
-         <children>
-            <VBox alignment="TOP_CENTER" prefHeight="50.0" prefWidth="224.0" spacing="20.0">
-               <children>
-                  <Label text="Memory Array Information">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <Line endX="51.5" opacity="0.35" startX="-100.0" />
-               </children>
-               <padding>
-                  <Insets top="30.0" />
-               </padding>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="224.0" spacing="5.0">
-               <children>
-                  <Label text="# of Memory Blocks">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField alignment="CENTER" maxWidth="130.0" prefHeight="25.0" prefWidth="161.0" text="10" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="16.0" prefWidth="224.0" spacing="5.0">
-               <children>
-                  <Label text="# of Free Blocks">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="freeBlocksTxt" alignment="CENTER" editable="false" maxWidth="130.0" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="23.0" prefWidth="224.0" spacing="5.0">
-               <children>
-                  <Label text="# of Blocks in Use">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="memBlocksInUseTxt" alignment="CENTER" editable="false" maxWidth="130.0" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="13.0" prefWidth="224.0" spacing="5.0">
-               <children>
-                  <Label text="Time Elapsed (s)">
-                     <font>
-                        <Font name="Verdana" size="15.0" />
-                     </font>
-                  </Label>
-                  <TextField fx:id="timeElapsedTxt" alignment="CENTER" editable="false" maxWidth="130.0" prefHeight="25.0" prefWidth="107.0" />
-               </children>
-               <padding>
-                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-               </padding>
-            </VBox>
-         </children>
-      </VBox>
+      </HBox>
    </children>
 </AnchorPane>

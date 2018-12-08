@@ -1,3 +1,13 @@
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class creates a new alert box with any given message.
+ * 
+ */
 package alerts;
 
 import javafx.scene.control.Alert;

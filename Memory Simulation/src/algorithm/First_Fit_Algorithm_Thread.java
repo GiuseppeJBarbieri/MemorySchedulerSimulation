@@ -92,7 +92,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 			setMemoryArrayInformation();
 			startDisplayingMemoryBlocksInArray();
 			updateTimeElapsed();
-			
+			updateFreeAndInUseBlockTxt();
 			try {
 				TimeUnit.SECONDS.sleep(1);
 				
@@ -149,6 +149,16 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 	private void updateTimeElapsed() {
 		timeElapsed++;
 		main_View_Controller.setTimeElapsedTxt(timeElapsed);
+	}
+	
+	private void updateFreeAndInUseBlockTxt() {
+		int freeBlocks = 0;
+		for(Segment_Object e : segmentList) {
+			if(e.getObj().getProcessId().equals("0")) {
+				freeBlocks++;
+			}
+		}
+		main_View_Controller.setfreeAndInUseBlocksTxt(Integer.toString(freeBlocks), Integer.toString((segmentList.size() - freeBlocks )));
 	}
 
 	private void checkIfProcessCanBeAddedToMemory() {
