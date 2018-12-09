@@ -1,5 +1,15 @@
 package main_view.main;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class shows the main stage for the GUI.
+ * It also loads each node on the GUI.
+ * 
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 

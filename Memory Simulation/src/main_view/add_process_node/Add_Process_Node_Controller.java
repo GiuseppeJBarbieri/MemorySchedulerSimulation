@@ -1,5 +1,14 @@
 package main_view.add_process_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class controls the add process node controls for the GUI.
+ * 
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -67,7 +76,7 @@ public class Add_Process_Node_Controller implements Initializable {
 			if (checkIfProccessInWaitingQueue(processIdChoiceBox.getSelectionModel().getSelectedItem()) == true) {
 				new Missing_Information_Alert("Process already in waiting queue!");
 			} else {
-				directorMap.getWaitingQueue().addToQueue(new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(), processSizeTxt.getText(), burstTimeTxt.getText()));
+				directorMap.getWaitingQueue().addToQueue(new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(), processSizeTxt.getText(), burstTimeTxt.getText(),Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			}
 			directorMap.getWaitingQueue().updateWaitingQueueTbl();
 		}

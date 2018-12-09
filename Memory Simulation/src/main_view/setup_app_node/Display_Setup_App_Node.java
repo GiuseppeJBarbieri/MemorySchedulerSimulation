@@ -1,9 +1,17 @@
 package main_view.setup_app_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class shows the display setup app node for the GUI.
+ * 
+ */
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main_view.director.Main_View_Director;
 import main_view.memory_array_node.Display_Memory_Array_Node;

@@ -1,5 +1,14 @@
 package algorithm;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class runs the first fit algorithm.
+ * 
+ */
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -35,12 +44,12 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 
 	@Override
 	public void run() {
-		// Fill memory block sizes until the total size in the array list =
-		// totalMemorySize
-		// adds waiting queue to the segment list and adds the processes to the segment
-		// then it remvoes them from the queue and updates the
-		// waiting queue on the main view
-
+		/* 
+		 * Fill memory block sizes until the total size in the array list = totalMemorySize
+		 * adds waiting queue to the segment list and adds the processes to the segment
+		 * then it removes them from the queue and updates 
+		 * the waiting queue on the main view
+		 */
 		int base = 200;
 		int limit = 200;
 		int id = 1;
@@ -57,24 +66,25 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		}
 		if (limit < Integer.parseInt(totalMemorySize)) {
 			// this creates the free space at the end of the memory array
-			Process_Object obj = new Process_Object("0", Integer.toString((Integer.parseInt(totalMemorySize) - limit)),"0");
-			segmentList.add(new Segment_Object(0, limit,Integer.parseInt(totalMemorySize), obj));
+			Process_Object obj = new Process_Object("0", Integer.toString((Integer.parseInt(totalMemorySize) - limit)),
+					"0", Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt()));
+			segmentList.add(new Segment_Object(0, limit, Integer.parseInt(totalMemorySize), obj));
 		}
 		for (Segment_Object e : segmentList) {
 			waitingQueue.remove(e.getObj());
 		}
 		directorMap.getWaitingQueue().setWaitingQueue(waitingQueue);
-		
-		// Starting queue
+
 		inUseMemBlocks = 0;
 		freeMemBlocks = 0;
-		directorMap.getMainC().setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),
-				Integer.toString(inUseMemBlocks));
+		directorMap.getMainC().setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks), Integer.toString(inUseMemBlocks));
 		directorMap.getWaitingQueue().setWaitingQueue(waitingQueue);
 		setMemoryArrayInformation();
 		startDisplayingMemoryBlocksInArray();
-
+		// Starting queue
 		while (!stopQueue) {
+			directorMap.getWaitingQueue().updateWaitingQueue();	
+			directorMap.getWaitingQueue().getMemCompChk().checkMemoryForCompaction();
 			directorMap.getMainC().setfreeAndInUseBlocksTxt(Integer.toString(freeMemBlocks),
 					Integer.toString(inUseMemBlocks));
 			directorMap.getWaitingQueue().setWaitingQueue(waitingQueue);
@@ -89,7 +99,8 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 				while (pauseQueue) {
 					TimeUnit.SECONDS.sleep(1);
 				}
-
+				//Loop through segment list and remove processes from memory
+				//And also check if a process cna be added to memory.
 				for (Segment_Object e : segmentList) {
 					if (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed <= 0) {
 						e.getObj().setBurstSize("0");
@@ -100,6 +111,7 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 								Integer.toString((int) (Integer.parseInt(e.getObj().getBurstSize()) - cpuSpeed)));
 					}
 				}
+				//This determines the free memory blocks and the blocks in use.
 				inUseMemBlocks = 0;
 				freeMemBlocks = 0;
 				for (Segment_Object e : segmentList) {
@@ -116,6 +128,46 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		}
 	}
 
+	/*
+	 * This method compacts the memory array.
+	 */
+	public void compactMemory() {
+		// updating segments
+		int size = segmentList.size();
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < segmentList.size(); j++) {
+				if (segmentList.get(j).getObj().getProcessId().equals("0")) {
+					removeSegmentFromMemory(segmentList.get(j));
+				}
+			}
+
+		}
+
+		int base2 = 200;
+		int limit2 = 199;
+		for (int i = 0; i < segmentList.size(); i++) {
+			segmentList.get(i).setBase(base2);
+			limit2 = limit2 + Integer.parseInt(segmentList.get(i).getObj().getProcessSize());
+			segmentList.get(i).setLimit(limit2);
+			base2 = limit2 + 1;
+		}
+
+		int base = 0;
+		int limit = 0;
+		int segsize = 0;
+		for (int i = 0; i < segmentList.size(); i++) {
+			base = segmentList.get(i).getLimit() + 1;
+			limit = Integer.parseInt(totalMemorySize);
+			segsize = limit - base + 1;
+		}
+		segmentList.add(
+				new Segment_Object(0, (limit2 + 1), limit, new Process_Object("0", Integer.toString(segsize), "0", "999999")));
+	}
+
+	/*
+	 * This method starts the memory gui portion to start
+	 * showing the memory array.
+	 */
 	private void startDisplayingMemoryBlocksInArray() {
 		Platform.runLater(new Runnable() {
 			@Override
@@ -126,8 +178,10 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 
 	}
 
+	/*
+	 * Sets the memory array node information fields. 
+	 */
 	private void setMemoryArrayInformation() {
-		// also sets free blocks and blocks in use txtfields
 		Platform.runLater(new Runnable() {
 			@Override
 			public void run() {
@@ -141,6 +195,9 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		directorMap.getMainC().setTimeElapsedTxt(timeElapsed);
 	}
 
+	/*
+	 * This method updates the free and in use memory segment textfields.
+	 */
 	private void updateFreeAndInUseBlockTxt() {
 		int freeBlocks = 0;
 		for (Segment_Object e : segmentList) {
@@ -170,25 +227,55 @@ public class First_Fit_Algorithm_Thread implements Runnable {
 		}
 	}
 
+	/*
+	 * This method removes the process from the memory segment and then it adds a new process to that memory
+	 * segment which is process 0.
+	 * 
+	 * process 0 means it's free space.
+	 */
 	private void removeProcessFromMemory(Process_Object obj) {
 		for (Segment_Object e : segmentList) {
 			if (e.getObj() != null) {
 				if (e.getObj().equals(obj)) {
-					Process_Object obj2 = new Process_Object("0", Integer.toString((e.getBase() + e.getLimit() + 1)),
-							"0");
+					Process_Object obj2 = new Process_Object("0", Integer.toString((e.getBase() + e.getLimit() + 1)),"0", Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt()));
 					e.setObj(obj2);
 				}
 			}
 		}
 	}
 
+	public void removeSegmentFromMemory(Segment_Object segment_Object) {
+		segmentList.remove(segment_Object);
+	}
+
+	/*
+	 * There is a while loop withing the loop in the run method that sets the 
+	 * boolean stopQueue to true which puts it into an infinite loop until it is
+	 * resumed.
+	 * 
+	 * It is used by the pause/resume button.
+	 * 
+	 * It will update the cpu speed if it was changed.
+	 */
 	public void pauseQueue(double cpuSpeed) {
 		pauseQueue = !pauseQueue;
 		this.cpuSpeed = cpuSpeed;
 	}
-
+	
+	/*
+	 * This method stops the main loop in the run method which ends the simulation.
+	 * 
+	 * Used by the reset simulation button.
+	 */
 	public void stopQueue() {
 		stopQueue = true;
+	}
+
+	public void setSegmentList(ArrayList<Segment_Object> segmentList) {
+		this.segmentList = segmentList;
+	}
+	public ArrayList<Segment_Object> getSegmentList() {
+		return segmentList;
 	}
 
 }

@@ -1,5 +1,14 @@
 package main_view.how_to_use;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class controls the how touse stage node for the GUI.
+ * 
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 

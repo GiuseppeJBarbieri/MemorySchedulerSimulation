@@ -10,7 +10,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="189.0" prefWidth="289.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.add_process_node.Add_Process_Node_Controller">
+<VBox prefHeight="189.0" prefWidth="289.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.add_process_node.Add_Process_Node_Controller">
    <children>
       <HBox alignment="CENTER" prefHeight="25.0" prefWidth="200.0" spacing="20.0">
          <children>

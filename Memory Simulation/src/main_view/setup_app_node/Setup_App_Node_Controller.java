@@ -1,5 +1,14 @@
 package main_view.setup_app_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class controls the node that has all the information for the memoryu array.
+ * 
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -32,7 +41,6 @@ public class Setup_App_Node_Controller implements Initializable {
 	private String[] algorithmList = { "First-Fit" };
 	private String[] partitionSizeTypeList = { "Unequal" };
 	private Display_Memory_Array_Node memArrayNode;
-	private Main_View_Director directorMap;
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
@@ -81,7 +89,9 @@ public class Setup_App_Node_Controller implements Initializable {
 			}
 		});
 	}
-	
+	/*
+	 * The next 2 methods checks to see if which radio button is selected.
+	 */
 	public boolean isYPreloadRBtnSelected() {
 		if(yPreloadRBtn.isSelected() == true) {
 			return true;
@@ -90,7 +100,7 @@ public class Setup_App_Node_Controller implements Initializable {
 		}
 	}
 	public boolean isYGenerateRBtnSelected() {
-		if(yGenerateRBtn.isSelected()) {
+		if(yGenerateRBtn.isSelected() == true) {
 			return true;
 		} else {
 			return false;
@@ -117,7 +127,6 @@ public class Setup_App_Node_Controller implements Initializable {
 	}
 	
 	public void setDirectorMap(Main_View_Director directorMap) {
-		this.directorMap = directorMap;
 		directorMap.setSanC(this);
 	}
 }

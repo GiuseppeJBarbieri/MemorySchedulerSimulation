@@ -14,13 +14,14 @@ package model;
  */
 public class Process_Object {
 
-	private String processId, processSize, burstSize;
+	private String processId, processSize, burstSize, timeEnteredIntoQueue;
 
-	public Process_Object(String processId, String processSize, String burstSize) {
+	public Process_Object(String processId, String processSize, String burstSize, String timeEnteredIntoQueue) {
 		super();
 		this.processId = processId;
 		this.processSize = processSize;
 		this.burstSize = burstSize;
+		this.timeEnteredIntoQueue = timeEnteredIntoQueue;
 	}
 
 	public String getProcessId() {
@@ -45,6 +46,14 @@ public class Process_Object {
 
 	public void setBurstSize(String burstSize) {
 		this.burstSize = burstSize;
+	}
+
+	public String getTimeEnteredIntoQueue() {
+		return timeEnteredIntoQueue;
+	}
+
+	public void setTimeEnteredIntoQueue(String timeEnteredIntoQueue) {
+		this.timeEnteredIntoQueue = timeEnteredIntoQueue;
 	}
 	
 }

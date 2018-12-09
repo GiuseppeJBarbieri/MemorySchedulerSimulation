@@ -11,7 +11,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="276.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.setup_app_node.Setup_App_Node_Controller">
+<VBox prefHeight="276.0" prefWidth="190.0" spacing="5.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.setup_app_node.Setup_App_Node_Controller">
    <children>
       <Label text="Select Algorithm">
          <font>

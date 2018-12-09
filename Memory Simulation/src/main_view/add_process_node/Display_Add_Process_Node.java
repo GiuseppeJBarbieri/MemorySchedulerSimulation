@@ -1,9 +1,17 @@
 package main_view.add_process_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class shows the add process node for the GUI.
+ * 
+ */
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main_view.director.Main_View_Director;
 

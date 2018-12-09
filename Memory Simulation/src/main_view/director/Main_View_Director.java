@@ -1,5 +1,19 @@
 package main_view.director;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class connects all the classes to each other.
+ * It contains each node for the display so that each node can access information between on another.
+ * 
+ * This class acts as the main controller.
+ * 
+ * Mostly contains getters and setters.
+ * 
+ */
 import algorithm.First_Fit_Algorithm_Thread;
 import main_view.add_process_node.Add_Process_Node_Controller;
 import main_view.cpu_speed_partition_type_node.CPU_Speed_Partition_Type_Node_Controller;
@@ -22,15 +36,15 @@ public class Main_View_Director {
 	private Waiting_Queue waitingQueue;
 	private First_Fit_Algorithm_Thread ffat;
 	private Add_Process_Node_Controller apnC;
+	@SuppressWarnings("unused")
 	private Display_Memory_Array_Node dman;
 	private Main_View_Controller main_View_Controller;
-	
-	
 	
 	public Main_View_Director(Main_View_Controller main_View_Controller) {
 		waitingQueue = new Waiting_Queue(this);
 		this.main_View_Controller = main_View_Controller;
 	}
+	
 	public Waiting_Queue getWaitingQueue() {
 		return waitingQueue;
 	}
@@ -88,7 +102,6 @@ public class Main_View_Director {
 	}
 	public void resetMemArrNode() {
 		dman = new Display_Memory_Array_Node(main_View_Controller.getMemoryBox(), this);
-		
 	}
 	
 }

@@ -7,7 +7,7 @@
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" prefHeight="460.0" prefWidth="289.0" spacing="45.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.simulation_controls_node.Simulation_Controls_Node_Controller">
+<VBox alignment="TOP_CENTER" prefHeight="460.0" prefWidth="289.0" spacing="45.0" style="-fx-border-color: #c4c4c4;" xmlns="http://javafx.com/javafx/" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main_view.simulation_controls_node.Simulation_Controls_Node_Controller">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="55.0" prefWidth="287.0" spacing="20.0">
          <children>
@@ -40,7 +40,7 @@
       <VBox alignment="TOP_CENTER" prefHeight="49.0" prefWidth="287.0" spacing="20.0">
          <children>
             <Line endX="144.5" opacity="0.35" startX="-100.0" />
-            <Button fx:id="compactBtn" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Compact Memory">
+            <Button fx:id="compactBtn" disable="true" mnemonicParsing="false" prefHeight="26.0" prefWidth="160.0" text="Compact Memory">
                <font>
                   <Font name="Verdana" size="13.0" />
                </font>

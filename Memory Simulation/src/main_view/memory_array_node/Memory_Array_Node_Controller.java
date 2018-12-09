@@ -1,5 +1,15 @@
 package main_view.memory_array_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class controls the memory array node for the GUI.
+ * It also contains the controls for moving around memory segments.
+ * 
+ */
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
@@ -18,12 +28,16 @@ public class Memory_Array_Node_Controller implements Initializable {
 	@FXML
 	private HBox memoryArrayContainerHBox;
 	@FXML
-	private VBox freeSpaceVBox, freeSpaceVBox1, freeSpaceVBox2, freeSpaceVBox3, freeSpaceVBox4, freeSpaceVBox5, freeSpaceVBox6, freeSpaceVBox7, freeSpaceVBox8, freeSpaceVBox9, freeSpaceVBox10;
+	private VBox freeSpaceVBox, freeSpaceVBox1, freeSpaceVBox2, freeSpaceVBox3, freeSpaceVBox4, freeSpaceVBox5,
+			freeSpaceVBox6, freeSpaceVBox7, freeSpaceVBox8, freeSpaceVBox9, freeSpaceVBox10;
 	@FXML
-	private Label freeSpaceBaseLbl1, freeSpaceLimitLbl1, freeSpaceSize1, freeSpaceBaseLbl2, freeSpaceLimitLbl2, freeSpaceSize2, freeSpaceBaseLbl3, freeSpaceLimitLbl3, freeSpaceSize3, 
-	freeSpaceBaseLbl4, freeSpaceLimitLbl4, freeSpaceSize4, freeSpaceBaseLbl5, freeSpaceLimitLbl5, freeSpaceSize5, freeSpaceBaseLbl6, freeSpaceLimitLbl6, freeSpaceSize6, freeSpaceBaseLbl7, freeSpaceLimitLbl7, freeSpaceSize7, 
-	freeSpaceBaseLbl8, freeSpaceLimitLbl8, freeSpaceSize8, freeSpaceBaseLbl9, freeSpaceLimitLbl9, freeSpaceSize9, freeSpaceBaseLbl10, freeSpaceLimitLbl10, freeSpaceSize10;
-	
+	private Label freeSpaceBaseLbl1, freeSpaceLimitLbl1, freeSpaceSize1, freeSpaceBaseLbl2, freeSpaceLimitLbl2,
+			freeSpaceSize2, freeSpaceBaseLbl3, freeSpaceLimitLbl3, freeSpaceSize3, freeSpaceBaseLbl4,
+			freeSpaceLimitLbl4, freeSpaceSize4, freeSpaceBaseLbl5, freeSpaceLimitLbl5, freeSpaceSize5,
+			freeSpaceBaseLbl6, freeSpaceLimitLbl6, freeSpaceSize6, freeSpaceBaseLbl7, freeSpaceLimitLbl7,
+			freeSpaceSize7, freeSpaceBaseLbl8, freeSpaceLimitLbl8, freeSpaceSize8, freeSpaceBaseLbl9,
+			freeSpaceLimitLbl9, freeSpaceSize9, freeSpaceBaseLbl10, freeSpaceLimitLbl10, freeSpaceSize10;
+
 	@FXML
 	private VBox osMemBlockVBox, memoryArrayVBox, memBlock1VBox, memBlock2VBox, memBlock3VBox, memBlock4VBox,
 			memBlock5VBox, memBlock6VBox, memBlock7VBox, memBlock8VBox, memBlock9VBox, memBlock10VBox;
@@ -66,9 +80,8 @@ public class Memory_Array_Node_Controller implements Initializable {
 	private ArrayList<Label> memBlockLimitLblList;
 	private ArrayList<VBox> memBlockVBoxList;
 	private ArrayList<HBox> processHBoxList;
-	private Main_View_Director directorMap;
 	private Display_Memory_Array_Node display_Memory_Array_Node;
-	
+
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
 		memBlockSizeTxtList = new ArrayList<>();
@@ -86,14 +99,17 @@ public class Memory_Array_Node_Controller implements Initializable {
 
 	}
 
+	/*
+	 * This method starts displaying the memory array for the GUI.
+	 */
 	public void startDisplayingMemBlocks(ArrayList<Segment_Object> segmentList) {
 		ArrayList<Segment_Object> segmentListCopy = new ArrayList<>();
 		ArrayList<Segment_Object> orderedIndexMBList = new ArrayList<>();
 		Integer lowestBaseIndex = 0;
 		memoryArrayVBox.getChildren().clear();
 		memoryArrayVBox.getChildren().add(osMemBlockVBox);
-		setFreeSpaceInformation(Integer.toString(segmentList.get((segmentList.size()-1)).getLimit()));
-		
+		setFreeSpaceInformation(Integer.toString(segmentList.get((segmentList.size() - 1)).getLimit()));
+
 		for (Segment_Object e : segmentList) {
 			segmentListCopy.add(e);
 		}
@@ -114,7 +130,8 @@ public class Memory_Array_Node_Controller implements Initializable {
 		// now that we have an organized list we must display it to the array node
 
 		for (int i = 0; i < orderedIndexMBList.size(); i++) {
-			if (orderedIndexMBList.get(i).getSegmentId() == 1) { // memBlock1VBox the memory block memoryArrayVBox is the container for the mem blocks
+			if (orderedIndexMBList.get(i).getSegmentId() == 1) { // memBlock1VBox the memory block memoryArrayVBox is
+																	// the container for the mem blocks
 				memoryArrayVBox.getChildren().add(memBlock1VBox);
 			} else if (orderedIndexMBList.get(i).getSegmentId() == 2) {
 				memoryArrayVBox.getChildren().add(memBlock2VBox);
@@ -134,20 +151,23 @@ public class Memory_Array_Node_Controller implements Initializable {
 				memoryArrayVBox.getChildren().add(memBlock9VBox);
 			} else if (orderedIndexMBList.get(i).getSegmentId() == 10) {
 				memoryArrayVBox.getChildren().add(memBlock10VBox);
-			} 
+			}
 		}
-		
+
 		checkIfProcessCanBeRemoved(orderedIndexMBList);
-		
+
 	}
 
+	/*
+	 * This method checks if a process can be removed from a memory segment.
+	 */
 	private void checkIfProcessCanBeRemoved(ArrayList<Segment_Object> orderedIndexMBList) {
-		for(int i = 0; i < orderedIndexMBList.size(); i++) {
-			if(Integer.parseInt(orderedIndexMBList.get(i).getObj().getBurstSize()) == 0) {
+		for (int i = 0; i < orderedIndexMBList.size(); i++) {
+			if (Integer.parseInt(orderedIndexMBList.get(i).getObj().getBurstSize()) == 0) {
 				if (orderedIndexMBList.get(i).getSegmentId() == 1) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock1VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock1VBox) {
 							break;
 						}
 						k++;
@@ -155,13 +175,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox1);
 					freeSpaceBaseLbl1.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl1.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize1.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize1.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock1VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 2) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock2VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock2VBox) {
 							break;
 						}
 						k++;
@@ -169,13 +190,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox2);
 					freeSpaceBaseLbl2.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl2.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize2.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize2.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock2VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 3) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock3VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock3VBox) {
 							break;
 						}
 						k++;
@@ -183,13 +205,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox3);
 					freeSpaceBaseLbl3.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl3.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize3.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize3.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock3VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 4) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock4VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock4VBox) {
 							break;
 						}
 						k++;
@@ -197,13 +220,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox4);
 					freeSpaceBaseLbl4.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl4.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize4.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize4.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock4VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 5) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock5VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock5VBox) {
 							break;
 						}
 						k++;
@@ -211,13 +235,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox5);
 					freeSpaceBaseLbl5.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl5.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize5.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize5.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock5VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 6) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock6VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock6VBox) {
 							break;
 						}
 						k++;
@@ -225,13 +250,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox6);
 					freeSpaceBaseLbl6.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl6.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize6.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize6.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock6VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 7) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock7VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock7VBox) {
 							break;
 						}
 						k++;
@@ -239,13 +265,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox7);
 					freeSpaceBaseLbl7.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl7.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize7.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize7.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock7VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 8) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock8VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock8VBox) {
 							break;
 						}
 						k++;
@@ -253,13 +280,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox8);
 					freeSpaceBaseLbl8.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl8.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize8.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize8.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock8VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 9) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock9VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock9VBox) {
 							break;
 						}
 						k++;
@@ -267,13 +295,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox9);
 					freeSpaceBaseLbl9.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl9.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize9.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize9.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock9VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 10) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock10VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock10VBox) {
 							break;
 						}
 						k++;
@@ -281,13 +310,14 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox10);
 					freeSpaceBaseLbl10.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl10.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize10.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+					freeSpaceSize10.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock10VBox);
-					
+
 				} else if (orderedIndexMBList.get(i).getSegmentId() == 0) {
 					int k = 0;
-					for(Object e : memoryArrayVBox.getChildren().toArray()) {
-						if((VBox) e == memBlock10VBox) {
+					for (Object e : memoryArrayVBox.getChildren().toArray()) {
+						if ((VBox) e == memBlock10VBox) {
 							break;
 						}
 						k++;
@@ -295,13 +325,17 @@ public class Memory_Array_Node_Controller implements Initializable {
 					memoryArrayVBox.getChildren().add(k, freeSpaceVBox);
 					freeSpaceBaseLbl.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
 					freeSpaceLimitLbl.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-					freeSpaceSize.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
-				} 
+					freeSpaceSize.setText(Integer.toString(
+							(orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
+				}
 			}
 		}
-		
+
 	}
-	
+
+	/*
+	 * This method sets the free space from the last memory segment to the end of the array.
+	 */
 	public void setFreeSpaceInformation(String memorySize) {
 		// sets the base and the size of the free space
 		if (memorySize != null) {
@@ -311,6 +345,9 @@ public class Memory_Array_Node_Controller implements Initializable {
 		}
 	}
 
+	/*
+	 * This method sets the memory block text fields.
+	 */
 	public void setMemBlockTxtFields(ArrayList<Segment_Object> segmentList) {
 		for (int i = 0; i < segmentList.size(); i++) {
 			resetProcesses(segmentList);
@@ -375,6 +412,9 @@ public class Memory_Array_Node_Controller implements Initializable {
 
 	}
 
+	/*
+	 * This method sets a process to a segment box so it can be displayed in the memory array.
+	 */
 	private void setProcessBoxToSegmentBox(ArrayList<Segment_Object> segmentList) {
 		for (int i = 0; i < segmentList.size(); i++) {
 			if (segmentList.get(i).getObj() != null) {
@@ -713,6 +753,9 @@ public class Memory_Array_Node_Controller implements Initializable {
 		}
 	}
 
+	/*
+	 * This method checks if a process burst time is 0 then it switches out the corresponding process boxes.
+	 */
 	private void resetProcesses(ArrayList<Segment_Object> segmentList) {
 		int p1 = 0;
 		int p2 = 0;
@@ -830,6 +873,10 @@ public class Memory_Array_Node_Controller implements Initializable {
 
 	}
 
+	/*
+	 * The next 4 methods take the labels, hbox, vbox, and text fields and makes them into a list for easier access
+	 *  and simplicity.
+	 */
 	private void setProcessHBoxList() {
 		processHBoxList.add(process1HBox);
 		processHBoxList.add(process2HBox);
@@ -931,12 +978,11 @@ public class Memory_Array_Node_Controller implements Initializable {
 	}
 
 	public void setDirectorMap(Main_View_Director directorMap, Display_Memory_Array_Node display_Memory_Array_Node) {
-		this.directorMap = directorMap;
 		directorMap.setManC(this);
 	}
+
 	public Display_Memory_Array_Node getMemArrNode() {
 		return display_Memory_Array_Node;
 	}
-	
 
 }

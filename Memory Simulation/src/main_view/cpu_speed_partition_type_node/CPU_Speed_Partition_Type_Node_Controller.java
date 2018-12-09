@@ -1,5 +1,15 @@
 package main_view.cpu_speed_partition_type_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class controls the cpu speed and partition
+ * node for the GUI.
+ * 
+ */
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -17,7 +27,6 @@ public class CPU_Speed_Partition_Type_Node_Controller implements Initializable {
 	@FXML
 	private ChoiceBox<String> partitionTypeChoiceBox;
 
-	private Main_View_Director directorMap;
 	private String[] partitionTypeList = { "Fixed Partitioning" };
 	
 	@Override
@@ -28,12 +37,14 @@ public class CPU_Speed_Partition_Type_Node_Controller implements Initializable {
 	}
 
 	public void setDirectorMap(Main_View_Director directorMap) {
-		this.directorMap = directorMap;
 		directorMap.setCsptnC(this);
 	}
 
 	public double getCpuSpeedChoice() {
 		return cpuSpeedChoice.getValue();
+	}
+	public void disableCpuSpeedChoice(boolean b) {
+		cpuSpeedChoice.setDisable(b);
 	}
 	
 }

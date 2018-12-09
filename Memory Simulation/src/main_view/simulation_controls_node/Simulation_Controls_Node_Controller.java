@@ -1,7 +1,15 @@
 package main_view.simulation_controls_node;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class controls the simulation controls node for the GUI.
+ * 
+ */
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import alerts.Missing_Information_Alert;
@@ -13,7 +21,6 @@ import javafx.scene.layout.VBox;
 import main_view.director.Main_View_Director;
 import main_view.memory_array_node.Display_Memory_Array_Node;
 import model.Process_Object;
-import model.Segment_Object;
 
 public class Simulation_Controls_Node_Controller implements Initializable {
 
@@ -32,33 +39,55 @@ public class Simulation_Controls_Node_Controller implements Initializable {
 		startBtn.setOnAction(e -> startSimulation());
 		stopBtn.setOnAction(e -> stopSimulation());
 		restartBtn.setOnAction(e -> restartSimulation());
+		compactBtn.setOnAction(e -> compactMemory());
 	}
 
+	/*
+	 * Compacts memory when the compact memory button is clicked.
+	 */
+	private void compactMemory() {
+		directorMap.getWaitingQueue().getMemCompChk().compactMemory();
+	}
+	/*
+	 * This method restarts the simulation and resets all the information.
+	 */
 	private void restartSimulation() {
+		compactBtn.setDisable(true);
+		directorMap.getCsptnC().disableCpuSpeedChoice(false);
 		directorMap.getSanC().disableSetMemorySizeBtn(false);
 		stopBtn.setText("Stop Simulation");
 		memoryBox.getChildren().clear();
 		if (ffat != null) {
 			ffat.stopQueue();
 		}
-		
+
 		startBtn.setDisable(false);
 		stopBtn.setDisable(true);
-		directorMap.resetMemArrNode();		
+		directorMap.resetMemArrNode();
 		directorMap.getWaitingQueue().clearWaitingQueue();
-		directorMap.getWaitingQueue().updateWaitingQueue(directorMap.getWaitingQueue().getWaitingQueue());
+		directorMap.getWaitingQueue().updateWaitingQueue();
 	}
-
+	
+	/*
+	 * This method pauses the simulation and resumes the simulation.
+	 */
 	private void stopSimulation() {
 		ffat.pauseQueue(directorMap.getCsptnC().getCpuSpeedChoice());
 		if (stopBtn.getText().equals("Stop Simulation")) {
 			stopBtn.setText("Resume Simulation");
+			directorMap.getCsptnC().disableCpuSpeedChoice(false);
 		} else {
 			stopBtn.setText("Stop Simulation");
+			directorMap.getCsptnC().disableCpuSpeedChoice(true);
 		}
 	}
 
+	/*
+	 * This method starts the simulation.
+	 */
 	private void startSimulation() {
+		compactBtn.setDisable(false);
+		directorMap.getCsptnC().disableCpuSpeedChoice(true);
 		presetInformation();
 		if (directorMap.getWaitingQueue().getSize() == 0) {
 			new Missing_Information_Alert("No processes in the waiting queue. Please add a process before you being.");
@@ -70,7 +99,6 @@ public class Simulation_Controls_Node_Controller implements Initializable {
 				new Missing_Information_Alert("Missing memory array size!");
 			} else {
 				if (directorMap.getSanC().getAlgorithmChoiceBoxSelectedIndex() == 0) {
-					// Need to set this since it was main view controller originally
 					ffat = new First_Fit_Algorithm_Thread(directorMap);
 					directorMap.setFfat(ffat);
 					t = new Thread(ffat);
@@ -82,38 +110,41 @@ public class Simulation_Controls_Node_Controller implements Initializable {
 		}
 	}
 
+	/*
+	 * This method presets the waitingQueue information.
+	 */
 	private void presetInformation() {
 		if (directorMap.getSanC().isYPreloadRBtnSelected()) {
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P1", Integer.toString(130), Integer.toString(5)));
+					.addToQueue(new Process_Object("P1", Integer.toString(130), Integer.toString(5), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P2", Integer.toString(230), Integer.toString(68)));
+					.addToQueue(new Process_Object("P2", Integer.toString(230), Integer.toString(68), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P3", Integer.toString(330), Integer.toString(12)));
+					.addToQueue(new Process_Object("P3", Integer.toString(330), Integer.toString(12), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P4", Integer.toString(420), Integer.toString(28)));
+					.addToQueue(new Process_Object("P4", Integer.toString(420), Integer.toString(28), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P5", Integer.toString(140), Integer.toString(94)));
+					.addToQueue(new Process_Object("P5", Integer.toString(140), Integer.toString(94), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P6", Integer.toString(200), Integer.toString(12)));
+					.addToQueue(new Process_Object("P6", Integer.toString(200), Integer.toString(12), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P7", Integer.toString(500), Integer.toString(83)));
+					.addToQueue(new Process_Object("P7", Integer.toString(500), Integer.toString(83), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P8", Integer.toString(540), Integer.toString(86)));
+					.addToQueue(new Process_Object("P8", Integer.toString(540), Integer.toString(86), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P9", Integer.toString(220), Integer.toString(41)));
+					.addToQueue(new Process_Object("P9", Integer.toString(220), Integer.toString(41), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P10", Integer.toString(490), Integer.toString(48)));
+					.addToQueue(new Process_Object("P10", Integer.toString(490), Integer.toString(48),Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P11", Integer.toString(280), Integer.toString(4)));
+					.addToQueue(new Process_Object("P11", Integer.toString(280), Integer.toString(4), Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P12", Integer.toString(160), Integer.toString(82)));
+					.addToQueue(new Process_Object("P12", Integer.toString(160), Integer.toString(82),Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P13", Integer.toString(300), Integer.toString(41)));
+					.addToQueue(new Process_Object("P13", Integer.toString(300), Integer.toString(41),Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P14", Integer.toString(540), Integer.toString(30)));
+					.addToQueue(new Process_Object("P14", Integer.toString(540), Integer.toString(30),Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 			directorMap.getWaitingQueue()
-					.addToQueue(new Process_Object("P15", Integer.toString(130), Integer.toString(32)));
+					.addToQueue(new Process_Object("P15", Integer.toString(130), Integer.toString(32),Integer.toString((int) directorMap.getMainC().getElapsedTimeTxt())));
 		}
 
 		directorMap.getWaitingQueue().updateWaitingQueueTbl();

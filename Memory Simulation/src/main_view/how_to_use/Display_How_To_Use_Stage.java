@@ -1,5 +1,14 @@
 package main_view.how_to_use;
-
+/*
+ * 
+ * Created By Giuseppe Barbieri
+ * Memory Management Simulation App
+ * Com 310-S01
+ * 12/06/2018
+ * 
+ * Description: This class shows the how to use stage for the GUI.
+ * 
+ */
 import java.io.IOException;
 
 import javafx.fxml.FXMLLoader;
