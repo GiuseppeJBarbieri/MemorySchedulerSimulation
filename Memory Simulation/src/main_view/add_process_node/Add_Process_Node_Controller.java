@@ -68,7 +68,6 @@ public class Add_Process_Node_Controller implements Initializable {
 				new Missing_Information_Alert("Process already in waiting queue!");
 			} else {
 				directorMap.getWaitingQueue().addToQueue(new Process_Object(processIdChoiceBox.getSelectionModel().getSelectedItem(), processSizeTxt.getText(), burstTimeTxt.getText()));
-				System.out.println(processIdChoiceBox.getSelectionModel().getSelectedItem() + processSizeTxt.getText() + " " + burstTimeTxt.getText());
 			}
 			directorMap.getWaitingQueue().updateWaitingQueueTbl();
 		}

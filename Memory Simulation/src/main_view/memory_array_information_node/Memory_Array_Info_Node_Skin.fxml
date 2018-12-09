@@ -22,9 +22,9 @@
             <Insets top="30.0" />
          </padding>
       </VBox>
-      <VBox alignment="TOP_CENTER" prefHeight="35.0" prefWidth="224.0" spacing="5.0">
+      <VBox alignment="TOP_CENTER" prefHeight="104.0" prefWidth="230.0" spacing="5.0">
          <children>
-            <Label text="# of Memory Blocks">
+            <Label prefHeight="57.0" prefWidth="210.0" text="Total Memory Blocks (Including OS)" textAlignment="CENTER" wrapText="true">
                <font>
                   <Font name="Verdana" size="15.0" />
                </font>

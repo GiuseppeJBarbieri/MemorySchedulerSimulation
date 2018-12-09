@@ -38,10 +38,13 @@ public class Simulation_Controls_Node_Controller implements Initializable {
 		directorMap.getSanC().disableSetMemorySizeBtn(false);
 		stopBtn.setText("Stop Simulation");
 		memoryBox.getChildren().clear();
-		ffat.stopQueue();
+		if (ffat != null) {
+			ffat.stopQueue();
+		}
+		
 		startBtn.setDisable(false);
 		stopBtn.setDisable(true);
-		memArrayNode = directorMap.getManC().getMemArrNode();
+		directorMap.resetMemArrNode();		
 		directorMap.getWaitingQueue().clearWaitingQueue();
 		directorMap.getWaitingQueue().updateWaitingQueue(directorMap.getWaitingQueue().getWaitingQueue());
 	}
@@ -78,42 +81,42 @@ public class Simulation_Controls_Node_Controller implements Initializable {
 			startBtn.setDisable(true);
 		}
 	}
-	
+
 	private void presetInformation() {
-			if (directorMap.getSanC().isYPreloadRBtnSelected()) {
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P1", Integer.toString(130), Integer.toString(5)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P2", Integer.toString(230), Integer.toString(68)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P3", Integer.toString(330), Integer.toString(12)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P4", Integer.toString(420), Integer.toString(28)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P5", Integer.toString(140), Integer.toString(94)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P6", Integer.toString(200), Integer.toString(12)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P7", Integer.toString(500), Integer.toString(83)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P8", Integer.toString(540), Integer.toString(86)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P9", Integer.toString(220), Integer.toString(41)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P10", Integer.toString(490), Integer.toString(48)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P11", Integer.toString(280), Integer.toString(4)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P12", Integer.toString(160), Integer.toString(82)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P13", Integer.toString(300), Integer.toString(41)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P14", Integer.toString(540), Integer.toString(30)));
-				directorMap.getWaitingQueue()
-						.addToQueue(new Process_Object("P15", Integer.toString(130), Integer.toString(32)));
-			}
-			
-			directorMap.getWaitingQueue().updateWaitingQueueTbl();
+		if (directorMap.getSanC().isYPreloadRBtnSelected()) {
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P1", Integer.toString(130), Integer.toString(5)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P2", Integer.toString(230), Integer.toString(68)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P3", Integer.toString(330), Integer.toString(12)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P4", Integer.toString(420), Integer.toString(28)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P5", Integer.toString(140), Integer.toString(94)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P6", Integer.toString(200), Integer.toString(12)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P7", Integer.toString(500), Integer.toString(83)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P8", Integer.toString(540), Integer.toString(86)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P9", Integer.toString(220), Integer.toString(41)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P10", Integer.toString(490), Integer.toString(48)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P11", Integer.toString(280), Integer.toString(4)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P12", Integer.toString(160), Integer.toString(82)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P13", Integer.toString(300), Integer.toString(41)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P14", Integer.toString(540), Integer.toString(30)));
+			directorMap.getWaitingQueue()
+					.addToQueue(new Process_Object("P15", Integer.toString(130), Integer.toString(32)));
+		}
+
+		directorMap.getWaitingQueue().updateWaitingQueueTbl();
 	}
 
 	public void setDirectorMap(Main_View_Director directorMap) {

@@ -3,14 +3,15 @@ package main_view.main;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-import algorithm.First_Fit_Algorithm_Thread;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import main_view.add_process_node.Display_Add_Process_Node;
 import main_view.cpu_speed_partition_type_node.Display_CPU_Speed_Partition_Type_Node;
 import main_view.director.Main_View_Director;
+import main_view.how_to_use.Display_How_To_Use_Stage;
 import main_view.memory_array_information_node.Display_Memory_Array_Info_Node;
 import main_view.memory_array_node.Display_Memory_Array_Node;
 import main_view.setup_app_node.Display_Setup_App_Node;
@@ -23,6 +24,8 @@ public class Main_View_Controller implements Initializable {
 	private HBox footerHBox, processCpuSpeedHBox;
 	@FXML
 	private VBox leftSetupAppVBox, memoryBox;
+	@FXML
+	private MenuItem howToUseMenuBtn;
 	
 	@SuppressWarnings("unused")
 	private Display_Memory_Array_Node memArrayNode;
@@ -37,7 +40,7 @@ public class Main_View_Controller implements Initializable {
 	
 	@Override
 	public void initialize(URL arg0, ResourceBundle arg1) {
-		mainDirector = new Main_View_Director();
+		mainDirector = new Main_View_Director(this);
 		memArrayNode = new Display_Memory_Array_Node(memoryBox, mainDirector);
 		displayWaitingQueueNode = new Display_Waiting_Queue_Node(mainDirector);
 		displaySetupAppNode = new Display_Setup_App_Node(mainDirector, memArrayNode);
@@ -50,5 +53,14 @@ public class Main_View_Controller implements Initializable {
 		processCpuSpeedHBox.getChildren().addAll(addProccessNode.getNode(),  displayCPUSpeedNode.getNode());
 		leftSetupAppVBox.getChildren().addAll(displaySetupAppNode.getNode());
 		
+		howToUseMenuBtn.setOnAction(e -> showHowToUseStage());
+	}
+
+
+	private void showHowToUseStage() {
+		new Display_How_To_Use_Stage();
+	}
+	public VBox getMemoryBox() {
+		return memoryBox;
 	}
 }

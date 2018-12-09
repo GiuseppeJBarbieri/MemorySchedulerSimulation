@@ -111,14 +111,6 @@ public class Memory_Array_Node_Controller implements Initializable {
 				segmentListCopy.remove(segmentListCopy.get(lowestBaseIndex));
 			}
 		}
-		for (Segment_Object e : orderedIndexMBList) {
-			System.out.println("MemBlockID: " + e.getSegmentId());
-			if (e.getObj() != null) {
-				System.out.println("\tContains Process" + e.getObj().getProcessId());
-			}
-
-		}
-		System.out.println("---------------------------------------");
 		// now that we have an organized list we must display it to the array node
 
 		for (int i = 0; i < orderedIndexMBList.size(); i++) {
@@ -142,12 +134,7 @@ public class Memory_Array_Node_Controller implements Initializable {
 				memoryArrayVBox.getChildren().add(memBlock9VBox);
 			} else if (orderedIndexMBList.get(i).getSegmentId() == 10) {
 				memoryArrayVBox.getChildren().add(memBlock10VBox);
-			} else if (orderedIndexMBList.get(i).getSegmentId() == 0) {
-				memoryArrayVBox.getChildren().add(freeSpaceVBox);
-				freeSpaceBaseLbl.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
-				freeSpaceSize.setText(orderedIndexMBList.get(i).getObj().getProcessSize());
-				freeSpaceLimitLbl.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
-			}
+			} 
 		}
 		
 		checkIfProcessCanBeRemoved(orderedIndexMBList);
@@ -297,16 +284,30 @@ public class Memory_Array_Node_Controller implements Initializable {
 					freeSpaceSize10.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 					memoryArrayVBox.getChildren().remove(memBlock10VBox);
 					
+				} else if (orderedIndexMBList.get(i).getSegmentId() == 0) {
+					int k = 0;
+					for(Object e : memoryArrayVBox.getChildren().toArray()) {
+						if((VBox) e == memBlock10VBox) {
+							break;
+						}
+						k++;
+					}
+					memoryArrayVBox.getChildren().add(k, freeSpaceVBox);
+					freeSpaceBaseLbl.setText(Integer.toString(orderedIndexMBList.get(i).getBase()));
+					freeSpaceLimitLbl.setText(Integer.toString(orderedIndexMBList.get(i).getLimit()));
+					freeSpaceSize.setText(Integer.toString((orderedIndexMBList.get(i).getLimit() - orderedIndexMBList.get(i).getBase() + 1)));
 				} 
 			}
 		}
 		
 	}
+	
 	public void setFreeSpaceInformation(String memorySize) {
 		// sets the base and the size of the free space
 		if (memorySize != null) {
 			freeSpaceLimitLbl.setText(memorySize);
 			freeSpaceSize.setText(Integer.toString((Integer.parseInt(memorySize) - 200)));
+			freeSpaceBaseLbl.setText("200");
 		}
 	}
 
@@ -936,5 +937,6 @@ public class Memory_Array_Node_Controller implements Initializable {
 	public Display_Memory_Array_Node getMemArrNode() {
 		return display_Memory_Array_Node;
 	}
+	
 
 }

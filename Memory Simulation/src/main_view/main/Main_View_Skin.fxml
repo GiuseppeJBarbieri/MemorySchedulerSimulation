@@ -19,6 +19,7 @@
             <Menu mnemonicParsing="false" text="Help">
                <items>
                   <MenuItem mnemonicParsing="false" text="About" />
+                  <MenuItem fx:id="howToUseMenuBtn" mnemonicParsing="false" text="How to use" />
                </items>
             </Menu>
          </menus>
